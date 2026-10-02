@@ -1,0 +1,20 @@
+{
+  "state": "finite typed cell vector plus designated graph incidence",
+  "event_order": "fixed occurrence order",
+  "matching": "fixed before replay; no rematching",
+  "event": "simultaneous constant overwrite with explicit unary guard observations",
+  "selection": "one Boolean decision per tag; retaining a tag retains all occurrences",
+  "receipts": "rebased in the selected execution context",
+  "typing": "base/final checks plus static event preservation rule; not a full dynamic graph typecheck after every step",
+  "one_write_result": "polynomial closure and unique maximum valid retention under stated fragment",
+  "two_write_result": "NP-complete with Boolean cells, <=2 writes/cell, exactly one event/aspect, one forced keep and one forced removal",
+  "two_write_nonclaim": "events may have polynomial footprint; constant-arity hardness is not proved",
+  "excluded": [
+    "rematching",
+    "fresh identity creation",
+    "implicit reads",
+    "concurrency",
+    "external side effects",
+    "production repository validation"
+  ]
+}

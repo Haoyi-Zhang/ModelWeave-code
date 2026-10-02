@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "run_1_passed": true,
+  "run_2_passed": true,
+  "run_1_commands_zero": true,
+  "run_2_commands_zero": true,
+  "run_1_command_count": 16,
+  "run_2_command_count": 16,
+  "semantic_campaign_records_each": 50000,
+  "independently_checked_campaign_packets_each": 50000,
+  "structural_inputs_each": 421,
+  "source_guided_inputs_each": 6,
+  "volatile_fields_ignored": [
+    "cpu_seconds",
+    "cumulative_child_peak_rss_kib",
+    "max_case_seconds",
+    "measured_child_cpu_seconds",
+    "peak_rss_kib",
+    "wall_seconds"
+  ],
+  "files_checked": 117,
+  "differences": [],
+  "log_or_telemetry_files_not_used_for_scientific_equality": [
+    "campaign/metrics.csv",
+    "campaign.log",
+    "coverage-summary.log",
+    "independent-campaign-check-000-009.log",
+    "independent-campaign-check-010-019.log",
+    "independent-campaign-check-020-029.log",
+    "independent-campaign-check-030-039.log",
+    "independent-campaign-check-040-049.log",
+    "independent-demo-check.log",
+    "independent-example-check.log",
+    "policy-demo.log",
+    "semantic-tests.log",
+    "source-examples.log",
+    "structural-tests.log"
+  ],
+  "interpretation": "Scientific records match across two fresh outputs after excluding runtime telemetry; this is finite reproducibility evidence, not a machine proof of the general theorems."
+}

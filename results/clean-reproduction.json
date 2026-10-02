@@ -1,0 +1,98 @@
+{
+  "status": "passed",
+  "meaning": "Clean finite reproduction and exact record reconciliation; not proof-assistant mechanization or source authenticity.",
+  "integrated_command": "python reproduce_all.py --output /tmp/weaving-clean",
+  "fresh_output_required": true,
+  "workers": 1,
+  "commands": 16,
+  "all_exit_codes_zero": true,
+  "wall_seconds": 44.00188925899988,
+  "measured_child_cpu_seconds": 50.36963,
+  "cumulative_child_peak_rss_kib": 110616,
+  "campaign": {
+    "cases": 50000,
+    "queries": 231071,
+    "success_certificates": 49526,
+    "local_certificates": 474,
+    "chunks": 50,
+    "seed": 27182818,
+    "fresh_campaign_cpu_seconds": 22.483218395,
+    "fresh_campaign_wall_seconds": 22.49845576200073,
+    "fresh_campaign_peak_rss_kib": 110616,
+    "fresh_max_case_seconds": 0.04903256400007194
+  },
+  "reconciliation": {
+    "semantic_campaign_records_compared": 50000,
+    "independently_checked_campaign_packets": 50000,
+    "structural_inputs_compared": 165,
+    "source_guided_inputs_compared": 6,
+    "comparison": "exact uncompressed semantic records and scientific counters; timings excluded",
+    "timings_excluded_from_semantic_equality": true
+  },
+  "coverage": {
+    "zero_event_inputs": 2,
+    "empty_mask_successes": 21213,
+    "no_receipt_successes": 26065,
+    "nonempty_receipt_successes": 23461,
+    "receipt_occurrences": 49861,
+    "full_mask_successes": 548
+  },
+  "structural": {
+    "passed": true,
+    "total_inputs": 165,
+    "direct_retention_queries": 2784,
+    "one_writer_partial_policies": 7776,
+    "two_writer_SAT_cases": 18,
+    "choice_tree_cases": 5,
+    "largest_checked_global_core": 7
+  },
+  "source_guided_examples": {
+    "passed": true,
+    "encodings": 6,
+    "retention_queries": 28,
+    "distinct_source_passages_or_figures": 5,
+    "published_tools_executed": 0,
+    "optimal_certificates": 4,
+    "infeasible_certificates": 2,
+    "cpu_seconds": 0.0,
+    "wall_seconds": 0.0017357859999265202,
+    "peak_rss_kib": 94592,
+    "counters": {
+      "producer": {
+        "value_checks": 14,
+        "edge_checks": 1,
+        "schema_index_entries": 4,
+        "static_edge_checks": 2,
+        "event_visits": 23,
+        "guard_tests": 12,
+        "write_updates": 15,
+        "profile_prefix_events": 18,
+        "produced_proof_nodes": 6,
+        "clause_tests": 32
+      },
+      "checker": {
+        "value_checks": 23,
+        "edge_checks": 2,
+        "schema_index_entries": 3,
+        "static_edge_checks": 2,
+        "event_visits": 24,
+        "guard_tests": 15,
+        "write_updates": 19,
+        "outcome_event_visits": 9,
+        "inverse_event_visits": 5,
+        "checked_proof_nodes": 6,
+        "cut_prefix_events": 3
+      },
+      "oracle": {
+        "oracle_event_visits": 68,
+        "oracle_guard_tests": 18,
+        "oracle_write_updates": 27
+      }
+    }
+  },
+  "hashes_generated": false,
+  "scope": "This clean run only; early unmetered exploratory CPU is not reconstructed.",
+  "historical_resource_record": true,
+  "later_targeted_regressions_included_in_timing": false,
+  "current_final_validation_directory": "results/final-validation/"
+}

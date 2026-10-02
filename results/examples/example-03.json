@@ -1,0 +1,107 @@
+{
+  "id": "example-03",
+  "case": {
+    "domains": [
+      3,
+      3
+    ],
+    "nodes": [],
+    "edges": [],
+    "base": [
+      1,
+      1
+    ],
+    "aspects": 2,
+    "events": [
+      {
+        "tag": 0,
+        "guard": [],
+        "write": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "tag": 1,
+        "guard": [
+          [
+            1,
+            [
+              1
+            ]
+          ]
+        ],
+        "write": [
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  "on": 2,
+  "off": 1,
+  "source_url": "https://jacquesklein2302.github.io/papers/2009-AspectUnweaving-MODELS.pdf",
+  "source_location": "Figure 4; author PDF page 9",
+  "encoding_boundary": "Newly exposed matches are not replayed. The fixed-match outcome is [1,2], not the rematched [2,2].",
+  "queries": [
+    {
+      "mask": 0,
+      "end": [
+        1,
+        1
+      ]
+    },
+    {
+      "mask": 1,
+      "end": [
+        0,
+        1
+      ]
+    },
+    {
+      "mask": 2,
+      "end": [
+        1,
+        2
+      ]
+    },
+    {
+      "mask": 3,
+      "end": [
+        0,
+        2
+      ]
+    }
+  ],
+  "certificate": {
+    "kind": "optimal",
+    "on": 2,
+    "off": 1,
+    "cost": 0,
+    "outcome": {
+      "mask": 2,
+      "end": [
+        1,
+        2
+      ],
+      "receipts": [
+        {
+          "at": 1,
+          "old": []
+        }
+      ]
+    },
+    "proof": {
+      "cost": true
+    }
+  },
+  "checked": {
+    "accepted": true,
+    "kind": "optimal",
+    "proof_nodes": 1
+  }
+}

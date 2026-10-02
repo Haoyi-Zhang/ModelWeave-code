@@ -1,0 +1,14 @@
+{
+  "random_traces": 512,
+  "observations": 6788,
+  "masks": 8192,
+  "prime_equality_checks": 6788,
+  "SAT_gadget_cases": 128,
+  "policy_completions": 10880,
+  "local_global_gap": true,
+  "unary_guard_domain": 3,
+  "seed": 716421,
+  "cpu_seconds": 2.396322841,
+  "peak_rss_kib": 92840,
+  "status": "finite_checks_passed_not_mechanized_general_proof"
+}

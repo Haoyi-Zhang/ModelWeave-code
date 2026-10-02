@@ -1,0 +1,125 @@
+{
+  "passed": true,
+  "test_methods": 8,
+  "failures": 0,
+  "errors": 0,
+  "evidence": {
+    "targeted_protocol": {
+      "query_mask": 21,
+      "minimum_facts": 3,
+      "inclusion_minimal_nonminimum_facts": 4,
+      "minimum_accepted": true,
+      "nonminimum_rejected": true,
+      "example_03_zero_cost_accepted": true,
+      "cost_leaf_rejected_without_optimal_budget": true
+    },
+    "mutations": {
+      "rejected_names": [
+        "wrong_final",
+        "wrong_old",
+        "missing_old",
+        "duplicate_old",
+        "wrong_occurrence",
+        "missing_receipt",
+        "bool_mask",
+        "high_mask",
+        "unknown_field",
+        "duplicate_write",
+        "out_of_domain",
+        "bad_original_guard",
+        "nonforcing_local",
+        "missing_core_witnesses",
+        "unforced_bad_source",
+        "wrong_cost",
+        "missing_branch",
+        "unauthorized_cost_leaf",
+        "dangling_base"
+      ],
+      "rejected": 19,
+      "consistent_case_and_receipt_change_accepted": true
+    },
+    "named": {
+      "cases": 11,
+      "retention_queries": 124,
+      "all_partial_policies": 675
+    },
+    "boundaries": {
+      "local_size": 3,
+      "global_size": 2,
+      "observation_omission": true,
+      "order_omission": true,
+      "stale_complement_rejected": true,
+      "delta_omission": true
+    },
+    "prime_oracle": {
+      "cases": 32,
+      "observations": 358,
+      "all_ternary_clauses_per_observation": 81,
+      "all_masks": 16
+    },
+    "reductions": {
+      "SAT_formulas": 16,
+      "vertex_cover_graphs": 16,
+      "differences": 0
+    },
+    "independence": {
+      "admitted_swaps": 32,
+      "differences": 0
+    },
+    "typing": {
+      "input_event_state_pairs": 8640,
+      "admitted_enabled_pairs": 2130,
+      "bad_poststates": 0,
+      "nodes": 2,
+      "edges": 1
+    }
+  },
+  "cpu_seconds": 0.2956431290000001,
+  "wall_seconds": 0.2956596980000086,
+  "peak_rss_kib": 94640,
+  "counters": {
+    "producer": {
+      "value_checks": 26589,
+      "event_visits": 11785,
+      "write_updates": 11458,
+      "guard_tests": 14588,
+      "failure_scan_events": 84,
+      "profile_prefix_events": 4857,
+      "clause_tests": 96311,
+      "produced_proof_nodes": 1756,
+      "inverse_event_visits": 208,
+      "edge_checks": 8640,
+      "schema_index_entries": 33280,
+      "static_edge_checks": 13200
+    },
+    "checker": {
+      "value_checks": 14794,
+      "event_visits": 6851,
+      "write_updates": 13672,
+      "guard_tests": 10334,
+      "local_oracle_events": 410,
+      "local_subset_operations": 2112,
+      "outcome_event_visits": 5628,
+      "inverse_event_visits": 4254,
+      "checked_proof_nodes": 1757,
+      "cut_prefix_events": 1248,
+      "edge_checks": 4261,
+      "schema_index_entries": 6390,
+      "static_edge_checks": 3648
+    },
+    "oracle": {
+      "oracle_event_visits": 82594,
+      "oracle_write_updates": 33019,
+      "oracle_guard_tests": 8588,
+      "prime_boolean_tests": 183404,
+      "ghost_event_visits": 10024
+    },
+    "baselines": {
+      "baseline_prepare_events": 2,
+      "baseline_forward_events": 2,
+      "baseline_write_updates": 1,
+      "baseline_undo_events": 2,
+      "baseline_undo_updates": 1
+    }
+  }
+}

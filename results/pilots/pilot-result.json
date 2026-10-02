@@ -1,0 +1,22 @@
+{
+  "traces": 12350,
+  "masks": 98800,
+  "local_observations": 18162,
+  "prime_checks": 18162,
+  "cpu_seconds": 1.729838393,
+  "wall_seconds": 1.7299643029999743,
+  "peak_rss_kib": 92588,
+  "negative_controls": {
+    "provider_switch": true,
+    "inhibitor_nonmonotonicity": true,
+    "stale_complement": true
+  },
+  "enumeration": {
+    "initial_values": 2,
+    "aspect_labels": 3,
+    "max_events": 3,
+    "valid_options_per_step": 18,
+    "masks_per_trace": 8
+  },
+  "status": "finite_checks_passed_not_mechanized_general_proof"
+}

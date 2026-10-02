@@ -1,0 +1,75 @@
+{
+  "status": "finite_checks_passed_not_mechanized_general_proof",
+  "complete": false,
+  "chunks": 2,
+  "metrics": {
+    "cases": 2000,
+    "queries": 8971,
+    "valid_queries": 7612,
+    "invalid_queries": 1359,
+    "clauses": 3670,
+    "literals": 8788,
+    "success_certificates": 1953,
+    "local_certificates": 47,
+    "baseline_queries": 5074,
+    "original_provider_false_accept": 0,
+    "original_provider_false_reject": 494,
+    "write_only_false_accept": 202,
+    "snapshot_delta_false_accept": 202,
+    "snapshot_delta_wrong_valid_state": 53,
+    "selective_old_log_false_accept": 119,
+    "selective_old_log_false_reject": 379,
+    "selective_old_log_wrong_valid_state": 51,
+    "exhaustive_cases": 350,
+    "small_cases": 650,
+    "medium_cases": 950,
+    "graph_cases": 50
+  },
+  "counters": {
+    "producer": {
+      "value_checks": 20500,
+      "event_visits": 30429,
+      "guard_tests": 22884,
+      "write_updates": 35271,
+      "profile_prefix_events": 141382,
+      "clause_tests": 11932,
+      "failure_scan_events": 200,
+      "edge_checks": 9600,
+      "schema_index_entries": 38400,
+      "static_edge_checks": 23381
+    },
+    "checker": {
+      "value_checks": 40870,
+      "event_visits": 15380,
+      "guard_tests": 22884,
+      "write_updates": 35271,
+      "outcome_event_visits": 15049,
+      "local_oracle_events": 795,
+      "local_subset_operations": 2648,
+      "inverse_event_visits": 8156,
+      "edge_checks": 19200,
+      "schema_index_entries": 28642,
+      "static_edge_checks": 23381
+    },
+    "oracle": {
+      "oracle_event_visits": 57917,
+      "oracle_guard_tests": 37701,
+      "oracle_write_updates": 55975
+    },
+    "baselines": {
+      "baseline_prepare_events": 2980,
+      "baseline_forward_events": 15062,
+      "baseline_undo_events": 14902,
+      "baseline_undo_updates": 4563,
+      "baseline_dependency_tests": 2933,
+      "baseline_write_updates": 6699,
+      "baseline_delta_updates": 3240
+    }
+  },
+  "cpu_seconds": 1.939998933,
+  "wall_seconds": 1.9422947029997886,
+  "peak_rss_kib": 110420,
+  "max_case_seconds": 0.08525532100020428,
+  "workers": 1,
+  "seed": 27182818
+}

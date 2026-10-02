@@ -1,0 +1,264 @@
+{
+  "passed": true,
+  "commands": [
+    {
+      "command": [
+        "python",
+        "tests/test_semantics.py",
+        "$OUTPUT/tests.json"
+      ],
+      "label": "semantic-tests",
+      "exit_code": 0,
+      "wall_seconds": 1.0908580929999516,
+      "cpu_seconds": 1.413575,
+      "cumulative_child_peak_rss_kib": 94876
+    },
+    {
+      "command": [
+        "python",
+        "tests/test_structural.py",
+        "$OUTPUT/structural"
+      ],
+      "label": "structural-tests",
+      "exit_code": 0,
+      "wall_seconds": 1.0727726119998806,
+      "cpu_seconds": 1.4498659999999999,
+      "cumulative_child_peak_rss_kib": 100012
+    },
+    {
+      "command": [
+        "python",
+        "tests/test_examples.py",
+        "$OUTPUT/examples"
+      ],
+      "label": "source-examples",
+      "exit_code": 0,
+      "wall_seconds": 0.7239248420000877,
+      "cpu_seconds": 1.130588,
+      "cumulative_child_peak_rss_kib": 100012
+    },
+    {
+      "command": [
+        "python",
+        "tests/pilots/pilot.py"
+      ],
+      "label": "exact-pilot",
+      "exit_code": 0,
+      "wall_seconds": 1.7761695720000716,
+      "cpu_seconds": 2.0937370000000004,
+      "cumulative_child_peak_rss_kib": 100012
+    },
+    {
+      "command": [
+        "python",
+        "tests/pilots/set_guard_pilot.py"
+      ],
+      "label": "set-pilot",
+      "exit_code": 0,
+      "wall_seconds": 2.2275381980000475,
+      "cpu_seconds": 2.598343999999999,
+      "cumulative_child_peak_rss_kib": 100012
+    },
+    {
+      "command": [
+        "python",
+        "tests/pilots/structural_pilot.py"
+      ],
+      "label": "structural-pilot",
+      "exit_code": 0,
+      "wall_seconds": 0.7231407330000366,
+      "cpu_seconds": 1.1027850000000006,
+      "cumulative_child_peak_rss_kib": 100012
+    },
+    {
+      "command": [
+        "python",
+        "reproduce.py",
+        "--out",
+        "$OUTPUT/campaign"
+      ],
+      "label": "campaign",
+      "exit_code": 0,
+      "wall_seconds": 16.368402872999923,
+      "cpu_seconds": 16.715495999999998,
+      "cumulative_child_peak_rss_kib": 110448
+    },
+    {
+      "command": [
+        "python",
+        "verify.py",
+        "$OUTPUT/campaign/cases-000.jsonl.gz",
+        "$OUTPUT/campaign/cases-001.jsonl.gz",
+        "$OUTPUT/campaign/cases-002.jsonl.gz",
+        "$OUTPUT/campaign/cases-003.jsonl.gz",
+        "$OUTPUT/campaign/cases-004.jsonl.gz",
+        "$OUTPUT/campaign/cases-005.jsonl.gz",
+        "$OUTPUT/campaign/cases-006.jsonl.gz",
+        "$OUTPUT/campaign/cases-007.jsonl.gz",
+        "$OUTPUT/campaign/cases-008.jsonl.gz",
+        "$OUTPUT/campaign/cases-009.jsonl.gz"
+      ],
+      "label": "independent-campaign-check-000-009",
+      "exit_code": 0,
+      "wall_seconds": 0.871202877000087,
+      "cpu_seconds": 1.2501740000000003,
+      "cumulative_child_peak_rss_kib": 110448
+    },
+    {
+      "command": [
+        "python",
+        "verify.py",
+        "$OUTPUT/campaign/cases-010.jsonl.gz",
+        "$OUTPUT/campaign/cases-011.jsonl.gz",
+        "$OUTPUT/campaign/cases-012.jsonl.gz",
+        "$OUTPUT/campaign/cases-013.jsonl.gz",
+        "$OUTPUT/campaign/cases-014.jsonl.gz",
+        "$OUTPUT/campaign/cases-015.jsonl.gz",
+        "$OUTPUT/campaign/cases-016.jsonl.gz",
+        "$OUTPUT/campaign/cases-017.jsonl.gz",
+        "$OUTPUT/campaign/cases-018.jsonl.gz",
+        "$OUTPUT/campaign/cases-019.jsonl.gz"
+      ],
+      "label": "independent-campaign-check-010-019",
+      "exit_code": 0,
+      "wall_seconds": 0.8233424899999591,
+      "cpu_seconds": 1.2125380000000023,
+      "cumulative_child_peak_rss_kib": 110448
+    },
+    {
+      "command": [
+        "python",
+        "verify.py",
+        "$OUTPUT/campaign/cases-020.jsonl.gz",
+        "$OUTPUT/campaign/cases-021.jsonl.gz",
+        "$OUTPUT/campaign/cases-022.jsonl.gz",
+        "$OUTPUT/campaign/cases-023.jsonl.gz",
+        "$OUTPUT/campaign/cases-024.jsonl.gz",
+        "$OUTPUT/campaign/cases-025.jsonl.gz",
+        "$OUTPUT/campaign/cases-026.jsonl.gz",
+        "$OUTPUT/campaign/cases-027.jsonl.gz",
+        "$OUTPUT/campaign/cases-028.jsonl.gz",
+        "$OUTPUT/campaign/cases-029.jsonl.gz"
+      ],
+      "label": "independent-campaign-check-020-029",
+      "exit_code": 0,
+      "wall_seconds": 0.821857264000073,
+      "cpu_seconds": 1.2150790000000005,
+      "cumulative_child_peak_rss_kib": 110448
+    },
+    {
+      "command": [
+        "python",
+        "verify.py",
+        "$OUTPUT/campaign/cases-030.jsonl.gz",
+        "$OUTPUT/campaign/cases-031.jsonl.gz",
+        "$OUTPUT/campaign/cases-032.jsonl.gz",
+        "$OUTPUT/campaign/cases-033.jsonl.gz",
+        "$OUTPUT/campaign/cases-034.jsonl.gz",
+        "$OUTPUT/campaign/cases-035.jsonl.gz",
+        "$OUTPUT/campaign/cases-036.jsonl.gz",
+        "$OUTPUT/campaign/cases-037.jsonl.gz",
+        "$OUTPUT/campaign/cases-038.jsonl.gz",
+        "$OUTPUT/campaign/cases-039.jsonl.gz"
+      ],
+      "label": "independent-campaign-check-030-039",
+      "exit_code": 0,
+      "wall_seconds": 0.8217194419999032,
+      "cpu_seconds": 1.2033900000000004,
+      "cumulative_child_peak_rss_kib": 110448
+    },
+    {
+      "command": [
+        "python",
+        "verify.py",
+        "$OUTPUT/campaign/cases-040.jsonl.gz",
+        "$OUTPUT/campaign/cases-041.jsonl.gz",
+        "$OUTPUT/campaign/cases-042.jsonl.gz",
+        "$OUTPUT/campaign/cases-043.jsonl.gz",
+        "$OUTPUT/campaign/cases-044.jsonl.gz",
+        "$OUTPUT/campaign/cases-045.jsonl.gz",
+        "$OUTPUT/campaign/cases-046.jsonl.gz",
+        "$OUTPUT/campaign/cases-047.jsonl.gz",
+        "$OUTPUT/campaign/cases-048.jsonl.gz",
+        "$OUTPUT/campaign/cases-049.jsonl.gz"
+      ],
+      "label": "independent-campaign-check-040-049",
+      "exit_code": 0,
+      "wall_seconds": 0.9222247079999306,
+      "cpu_seconds": 1.2778829999999979,
+      "cumulative_child_peak_rss_kib": 110448
+    },
+    {
+      "command": [
+        "python",
+        "summarize_coverage.py",
+        "--campaign",
+        "$OUTPUT/campaign",
+        "--output",
+        "$OUTPUT/campaign/coverage.json"
+      ],
+      "label": "coverage-summary",
+      "exit_code": 0,
+      "wall_seconds": 1.222260446000064,
+      "cpu_seconds": 1.566506000000002,
+      "cumulative_child_peak_rss_kib": 110448
+    },
+    {
+      "command": [
+        "python",
+        "verify.py",
+        "$OUTPUT/examples/example-01.json",
+        "$OUTPUT/examples/example-02.json",
+        "$OUTPUT/examples/example-03.json",
+        "$OUTPUT/examples/example-04.json",
+        "$OUTPUT/examples/example-05.json",
+        "$OUTPUT/examples/example-06.json"
+      ],
+      "label": "independent-example-check",
+      "exit_code": 0,
+      "wall_seconds": 0.6215298960000837,
+      "cpu_seconds": 1.0142299999999995,
+      "cumulative_child_peak_rss_kib": 110448
+    },
+    {
+      "command": [
+        "python",
+        "demo.py",
+        "results/examples/example-02.json",
+        "--on",
+        "2",
+        "--off",
+        "1",
+        "--output",
+        "$OUTPUT/query.json"
+      ],
+      "label": "policy-demo",
+      "exit_code": 0,
+      "wall_seconds": 0.6242422719999468,
+      "cpu_seconds": 1.008170000000003,
+      "cumulative_child_peak_rss_kib": 110448
+    },
+    {
+      "command": [
+        "python",
+        "verify.py",
+        "$OUTPUT/query.json"
+      ],
+      "label": "independent-demo-check",
+      "exit_code": 0,
+      "wall_seconds": 0.6240128760000516,
+      "cpu_seconds": 0.9630609999999966,
+      "cumulative_child_peak_rss_kib": 110448
+    }
+  ],
+  "workers": 1,
+  "semantic_campaign_records_compared": 50000,
+  "independently_checked_campaign_packets": 50000,
+  "structural_inputs_compared": 421,
+  "source_guided_inputs_compared": 6,
+  "hashes_generated": false,
+  "comparison": "exact uncompressed semantic records and scientific counters; timings excluded",
+  "wall_seconds": 31.45270908800012,
+  "measured_child_cpu_seconds": 37.215422000000004,
+  "scope": "This clean run only; early unmetered exploratory CPU is not reconstructed."
+}

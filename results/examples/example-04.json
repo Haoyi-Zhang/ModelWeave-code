@@ -1,0 +1,99 @@
+{
+  "id": "example-04",
+  "case": {
+    "domains": [
+      3
+    ],
+    "nodes": [],
+    "edges": [],
+    "base": [
+      0
+    ],
+    "aspects": 2,
+    "events": [
+      {
+        "tag": 0,
+        "guard": [],
+        "write": [
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      {
+        "tag": 1,
+        "guard": [
+          [
+            0,
+            [
+              1,
+              2
+            ]
+          ]
+        ],
+        "write": []
+      }
+    ]
+  },
+  "on": 2,
+  "off": 1,
+  "source_url": "https://jacquesklein2302.github.io/papers/2009-AspectUnweaving-MODELS.pdf",
+  "source_location": "Section 4.2; author PDF page 6",
+  "encoding_boundary": "Threshold projection: codes 0,1,2 represent 50,150,200. Base 50 is an encoding choice.",
+  "queries": [
+    {
+      "mask": 0,
+      "end": [
+        0
+      ]
+    },
+    {
+      "mask": 1,
+      "end": [
+        2
+      ]
+    },
+    {
+      "mask": 2,
+      "end": null
+    },
+    {
+      "mask": 3,
+      "end": [
+        2
+      ]
+    }
+  ],
+  "certificate": {
+    "kind": "infeasible",
+    "on": 2,
+    "off": 1,
+    "core_on": 2,
+    "core_off": 1,
+    "proof": {
+      "cut": [
+        1,
+        0,
+        -1
+      ]
+    },
+    "witnesses": [
+      {
+        "on": 0,
+        "off": 1,
+        "mask": 0
+      },
+      {
+        "on": 2,
+        "off": 0,
+        "mask": 3
+      }
+    ]
+  },
+  "checked": {
+    "accepted": true,
+    "kind": "infeasible",
+    "proof_nodes": 1
+  }
+}

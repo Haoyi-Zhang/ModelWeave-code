@@ -1,0 +1,96 @@
+{
+  "id": "example-05",
+  "case": {
+    "domains": [
+      3
+    ],
+    "nodes": [],
+    "edges": [],
+    "base": [
+      1
+    ],
+    "aspects": 2,
+    "events": [
+      {
+        "tag": 0,
+        "guard": [],
+        "write": [
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      {
+        "tag": 1,
+        "guard": [
+          [
+            0,
+            [
+              1,
+              2
+            ]
+          ]
+        ],
+        "write": []
+      }
+    ]
+  },
+  "on": 2,
+  "off": 1,
+  "source_url": "https://jacquesklein2302.github.io/papers/2009-AspectUnweaving-MODELS.pdf",
+  "source_location": "Section 4.2; author PDF page 6",
+  "encoding_boundary": "Same threshold passage, base 150 chosen by this encoding. Not a second published example.",
+  "queries": [
+    {
+      "mask": 0,
+      "end": [
+        1
+      ]
+    },
+    {
+      "mask": 1,
+      "end": [
+        2
+      ]
+    },
+    {
+      "mask": 2,
+      "end": [
+        1
+      ]
+    },
+    {
+      "mask": 3,
+      "end": [
+        2
+      ]
+    }
+  ],
+  "certificate": {
+    "kind": "optimal",
+    "on": 2,
+    "off": 1,
+    "cost": 0,
+    "outcome": {
+      "mask": 2,
+      "end": [
+        1
+      ],
+      "receipts": [
+        {
+          "at": 1,
+          "old": []
+        }
+      ]
+    },
+    "proof": {
+      "cost": true
+    }
+  },
+  "checked": {
+    "accepted": true,
+    "kind": "optimal",
+    "proof_nodes": 1
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "status": "finite_checks_passed_not_mechanized_general_proof",
+  "complete": true,
+  "chunks": 50,
+  "metrics": {
+    "cases": 50000,
+    "queries": 231071,
+    "valid_queries": 216836,
+    "invalid_queries": 14235,
+    "clauses": 17678,
+    "literals": 37906,
+    "success_certificates": 49526,
+    "local_certificates": 474,
+    "baseline_queries": 105801,
+    "original_provider_false_accept": 0,
+    "original_provider_false_reject": 6367,
+    "write_only_false_accept": 6338,
+    "snapshot_delta_false_accept": 6338,
+    "snapshot_delta_wrong_valid_state": 1956,
+    "selective_old_log_false_accept": 4034,
+    "selective_old_log_false_reject": 6469,
+    "selective_old_log_wrong_valid_state": 2085,
+    "exhaustive_cases": 12350,
+    "small_cases": 36400,
+    "medium_cases": 1200,
+    "graph_cases": 50
+  },
+  "counters": {
+    "producer": {
+      "value_checks": 104750,
+      "event_visits": 318191,
+      "write_updates": 181730,
+      "guard_tests": 177686,
+      "profile_prefix_events": 266056,
+      "clause_tests": 73810,
+      "failure_scan_events": 1340,
+      "edge_checks": 9600,
+      "schema_index_entries": 38400,
+      "static_edge_checks": 23381
+    },
+    "checker": {
+      "value_checks": 208645,
+      "event_visits": 159924,
+      "outcome_event_visits": 158267,
+      "write_updates": 181730,
+      "guard_tests": 177686,
+      "local_oracle_events": 3342,
+      "local_subset_operations": 13296,
+      "inverse_event_visits": 49861,
+      "edge_checks": 19200,
+      "schema_index_entries": 28642,
+      "static_edge_checks": 23381
+    },
+    "oracle": {
+      "oracle_event_visits": 717262,
+      "oracle_write_updates": 336610,
+      "oracle_guard_tests": 328842
+    },
+    "baselines": {
+      "baseline_prepare_events": 42324,
+      "baseline_forward_events": 311595,
+      "baseline_undo_events": 307934,
+      "baseline_undo_updates": 92631,
+      "baseline_write_updates": 107759,
+      "baseline_delta_updates": 55619,
+      "baseline_dependency_tests": 52087
+    }
+  },
+  "cpu_seconds": 24.10386504099999,
+  "wall_seconds": 24.12169501399876,
+  "peak_rss_kib": 109868,
+  "max_case_seconds": 0.0736975079998956,
+  "workers": 1,
+  "seed": 27182818
+}

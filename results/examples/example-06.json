@@ -1,0 +1,136 @@
+{
+  "id": "example-06",
+  "case": {
+    "domains": [
+      2
+    ],
+    "nodes": [],
+    "edges": [],
+    "base": [
+      0
+    ],
+    "aspects": 3,
+    "events": [
+      {
+        "tag": 0,
+        "guard": [],
+        "write": [
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "tag": 1,
+        "guard": [],
+        "write": [
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "tag": 2,
+        "guard": [
+          [
+            0,
+            [
+              1
+            ]
+          ]
+        ],
+        "write": []
+      }
+    ]
+  },
+  "on": 4,
+  "off": 2,
+  "source_url": "https://www.doc.ic.ac.uk/~iccp/papers/ReversingEventStructures.pdf",
+  "source_location": "Figure 5, left cube; PDF page 15",
+  "encoding_boundary": "Disjunctive enabling projected to one fixed order; no reversible-event-structure implementation is imported.",
+  "queries": [
+    {
+      "mask": 0,
+      "end": [
+        0
+      ]
+    },
+    {
+      "mask": 1,
+      "end": [
+        1
+      ]
+    },
+    {
+      "mask": 2,
+      "end": [
+        1
+      ]
+    },
+    {
+      "mask": 3,
+      "end": [
+        1
+      ]
+    },
+    {
+      "mask": 4,
+      "end": null
+    },
+    {
+      "mask": 5,
+      "end": [
+        1
+      ]
+    },
+    {
+      "mask": 6,
+      "end": [
+        1
+      ]
+    },
+    {
+      "mask": 7,
+      "end": [
+        1
+      ]
+    }
+  ],
+  "certificate": {
+    "kind": "optimal",
+    "on": 4,
+    "off": 2,
+    "cost": 0,
+    "outcome": {
+      "mask": 5,
+      "end": [
+        1
+      ],
+      "receipts": [
+        {
+          "at": 0,
+          "old": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "at": 2,
+          "old": []
+        }
+      ]
+    },
+    "proof": {
+      "cost": true
+    }
+  },
+  "checked": {
+    "accepted": true,
+    "kind": "optimal",
+    "proof_nodes": 1
+  }
+}

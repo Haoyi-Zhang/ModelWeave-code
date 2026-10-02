@@ -1,0 +1,65 @@
+{
+  "start": 7000,
+  "stop": 8000,
+  "metrics": {
+    "cases": 1000,
+    "queries": 8000,
+    "valid_queries": 7502,
+    "invalid_queries": 498,
+    "clauses": 270,
+    "literals": 564,
+    "success_certificates": 983,
+    "local_certificates": 17,
+    "baseline_queries": 8000,
+    "original_provider_false_accept": 0,
+    "original_provider_false_reject": 480,
+    "write_only_false_accept": 498,
+    "snapshot_delta_false_accept": 498,
+    "snapshot_delta_wrong_valid_state": 152,
+    "selective_old_log_false_accept": 320,
+    "selective_old_log_false_reject": 488,
+    "selective_old_log_wrong_valid_state": 164,
+    "exhaustive_cases": 1000,
+    "small_cases": 0,
+    "medium_cases": 0,
+    "graph_cases": 0
+  },
+  "counters": {
+    "producer": {
+      "value_checks": 1000,
+      "event_visits": 5834,
+      "write_updates": 1961,
+      "guard_tests": 1776,
+      "profile_prefix_events": 1483,
+      "clause_tests": 2117,
+      "failure_scan_events": 45
+    },
+    "checker": {
+      "value_checks": 1983,
+      "event_visits": 2942,
+      "write_updates": 1961,
+      "guard_tests": 1776,
+      "local_oracle_events": 94,
+      "local_subset_operations": 408,
+      "outcome_event_visits": 2892
+    },
+    "oracle": {
+      "oracle_event_visits": 23320,
+      "oracle_write_updates": 7440,
+      "oracle_guard_tests": 7050
+    },
+    "baselines": {
+      "baseline_prepare_events": 2942,
+      "baseline_forward_events": 23536,
+      "baseline_undo_events": 23254,
+      "baseline_undo_updates": 7086,
+      "baseline_dependency_tests": 3960,
+      "baseline_write_updates": 7844,
+      "baseline_delta_updates": 3984
+    }
+  },
+  "cpu_seconds": 0.25379175499999995,
+  "wall_seconds": 0.25447984499987797,
+  "peak_rss_kib": 103716,
+  "max_case_seconds": 0.0529463670000041
+}
