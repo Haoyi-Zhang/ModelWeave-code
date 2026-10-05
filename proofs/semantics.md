@@ -109,8 +109,11 @@ therefore storing all and only the non-singleton coordinates is sufficient and
 necessary in this storage model. QED.
 
 For a fixed setting of unwritten cells, the product-fragment fiber has cardinality
-product_{x in W}|A_x|. An arbitrary lossless binary encoding therefore needs at
-least ceil(log2(product |A_x|)) bits in the worst case. Coordinate storage is not
+product_{x in W}|A_x|. A lossless fixed-length binary encoding, or a prefix-free
+encoding with all framing charged to the receipt, therefore needs at least
+ceil(log2(product |A_x|)) bits in the worst case. Unrestricted variable-length
+payloads with externally supplied boundaries do not obey that exact bound.
+Coordinate storage is not
 claimed to attain that bit bound. Relational graph constraints can also shrink a
 fiber and make a coordinate inferable. Thus T4 is not a claim of globally minimal
 logging for typed graphs.
