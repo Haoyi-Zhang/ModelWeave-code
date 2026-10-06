@@ -21,7 +21,10 @@ constant-arity hardness result is claimed.
 
 ## Reproduce
 
-Run from this directory with Python 3.10 or newer and a new output directory:
+Run from this directory on Linux with Python 3.10 or newer and a new output
+directory. The full runner, campaign, and test drivers use the Unix `resource`
+module for resource limits and telemetry; RSS is recorded in Linux KiB units.
+These entry points do not support native Windows.
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 \
@@ -34,13 +37,26 @@ checker batches, coverage regeneration, an example check, a policy query, and an
 independent check of that query. It refuses an existing output directory. No
 network, GPU, external model API, non-standard package, or parallel worker is used.
 
-Useful focused commands:
+The GitHub Actions workflow in `.github/workflows/scientific-checks.yml` runs
+the full reproduction on `ubuntu-latest` with Python 3.12, using a fresh output
+directory under `RUNNER_TEMP`. It uploads the complete output tree, including
+raw compressed JSONL records and logs, without changing scientific seeds or
+resource limits.
+
+Useful focused commands on Linux:
 
 ```sh
 python3 tests/test_semantics.py /tmp/semantic-tests.json
 python3 tests/test_structural.py /tmp/structural-tests
 python3 tests/test_examples.py /tmp/source-examples
 python3 verify.py results/examples/example-03.json
+```
+
+The independent verifier itself does not import `resource` and can also check
+stored packets on native Windows with Python 3.10 or newer:
+
+```powershell
+python -B verify.py results/examples/example-03.json
 ```
 
 ## Recorded evidence

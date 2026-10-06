@@ -1,0 +1,39 @@
+name: Scientific checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - name: Check out artifact
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - name: Select fresh output on the assigned runner
+        shell: bash
+        run: echo "REPRO_OUTPUT=$RUNNER_TEMP/p003-scientific-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" >> "$GITHUB_ENV"
+      - name: Reproduce and independently check scientific records
+        run: python reproduce_all.py --output "$REPRO_OUTPUT"
+      - name: Upload raw results and logs
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p003-scientific-results-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.REPRO_OUTPUT }}/
+          if-no-files-found: error
+          retention-days: 14
