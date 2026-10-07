@@ -59,6 +59,20 @@ stored packets on native Windows with Python 3.10 or newer:
 python -B verify.py results/examples/example-03.json
 ```
 
+The event-local guard index has a portable comparison against an independent
+per-coordinate scan. `python -B tests/test_event_local_guard.py` runs the
+35-fixture, 429-mask regression and four hand-written outcome/counter anchors.
+`python -B benchmarks/benchmark_guard_lookup.py --describe` prints the timing
+protocol; `--run-serial-timing` executes it and prints all samples. Run timing
+alone, not concurrently with other benchmarks.
+
+`results/guard-lookup/measurement.json` records five alternating paired blocks
+over 20 mixed wide fixtures, 160 queries per arm per block. The median scan-to-index
+ratio is 8.70 (block ratios 8.05--9.80). This times replay and successful reversal,
+not parsing, certificate checking, producer search, or production tools. The
+measurement uses Python 3.12.14 on Windows 11, one worker, and no CPU pinning.
+Absent-guard, empty-mask, and ordinary guard-failure cases remain in the mixture.
+
 ## Recorded evidence
 
 - 50,000 deterministic campaign packets and 231,071 direct replay queries.
@@ -91,6 +105,6 @@ source authentication.
 - `src/`: engine, producer, checker, direct oracle, generators, and reductions.
 - `tests/`: semantic, structural, source-projection, mutation, and pilot tests.
 - `proofs/semantics.md`: definitions and written proofs T1--T26.
-- `results/`: immutable campaign records, summaries, examples, and final validation.
+- `results/`: campaign records, summaries, examples, and comparison measurements.
 - `docs/`: schema, proof/code map, reproduction, resources, evidence limits, and audit.
 - `claim_evidence_ledger.csv`: claim-to-proof/test/result mapping.

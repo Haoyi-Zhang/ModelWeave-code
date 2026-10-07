@@ -1,0 +1,131 @@
+{
+  "comparison_reference": "independent per-coordinate linear guard scan",
+  "candidate": "event-local engine lookup",
+  "widths": [
+    64,
+    128,
+    256,
+    512
+  ],
+  "modes": [
+    "singleton",
+    "nonsingleton",
+    "unguarded",
+    "unit_domain",
+    "mixed"
+  ],
+  "fixtures": 20,
+  "masks_per_fixture": 4,
+  "queries_per_pass": 80,
+  "passes_per_sample": 2,
+  "paired_rounds": 5,
+  "timed_scope": "replay and successful reverse; no parsing or checking",
+  "equality_gate": "fixture/API/oracle/checker regression; exact workload outcomes/receipts/order/restored states/counters; timed-block counters",
+  "workers": 1,
+  "equality_gate_passed": true,
+  "regression": {
+    "passed": true,
+    "tests_run": 4,
+    "tests": [
+      "test_bounded_multiwrite_variants",
+      "test_hand_written_receipt_and_counter_anchors",
+      "test_named_fixtures",
+      "test_public_inferred_old_api"
+    ],
+    "coverage": {
+      "named_fixtures": 11,
+      "variant_fixtures": 24,
+      "named_masks": 124,
+      "variant_masks": 305,
+      "success_masks": 334,
+      "failure_masks": 95,
+      "receipt_occurrences": 1054,
+      "old_pairs": 8004,
+      "public_api_calls": 2249,
+      "checker_calls": 668
+    },
+    "failures": [],
+    "errors": [],
+    "comparison_reference": "independent per-coordinate guard scan",
+    "benchmark_timing_run": false,
+    "saved_results_written": false
+  },
+  "workload_successes": 68,
+  "workload_failures": 12,
+  "workload_counters": {
+    "event_visits": 552,
+    "guard_tests": 26892,
+    "write_updates": 56640,
+    "inverse_event_visits": 224
+  },
+  "samples": [
+    {
+      "round": 1,
+      "order": [
+        "scan_reference",
+        "event_local_engine"
+      ],
+      "nanoseconds": {
+        "scan_reference": 774518900,
+        "event_local_engine": 79007200
+      },
+      "queries_per_version": 160
+    },
+    {
+      "round": 2,
+      "order": [
+        "event_local_engine",
+        "scan_reference"
+      ],
+      "nanoseconds": {
+        "event_local_engine": 73558000,
+        "scan_reference": 660308400
+      },
+      "queries_per_version": 160
+    },
+    {
+      "round": 3,
+      "order": [
+        "scan_reference",
+        "event_local_engine"
+      ],
+      "nanoseconds": {
+        "scan_reference": 652933700,
+        "event_local_engine": 75088300
+      },
+      "queries_per_version": 160
+    },
+    {
+      "round": 4,
+      "order": [
+        "event_local_engine",
+        "scan_reference"
+      ],
+      "nanoseconds": {
+        "event_local_engine": 82422400,
+        "scan_reference": 663287000
+      },
+      "queries_per_version": 160
+    },
+    {
+      "round": 5,
+      "order": [
+        "scan_reference",
+        "event_local_engine"
+      ],
+      "nanoseconds": {
+        "scan_reference": 652991700,
+        "event_local_engine": 77243900
+      },
+      "queries_per_version": 160
+    }
+  ],
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "environment": {
+    "system": "Windows-11-10.0.28000-SP0",
+    "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+    "logical_cpus": 20,
+    "clock_resolution_seconds": 1e-07,
+    "cpu_affinity": null
+  }
+}

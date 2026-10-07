@@ -139,7 +139,10 @@ def parse_case(obj: Any, *, original: bool = True) -> Case:
     return c
 
 def inferred_old(case: Case, event: Event, x: int) -> int | None:
-    allowed=dict(event.guard).get(x)
+    return _inferred_old(case,dict(event.guard),x)
+
+def _inferred_old(case: Case, guard: dict[int, tuple[int, ...]], x: int) -> int | None:
+    allowed=guard.get(x)
     if allowed is not None and len(allowed)==1:
         return allowed[0]
     if case.domains[x]==1:
@@ -158,10 +161,11 @@ def replay(case: Case, mask: int) -> dict[str, Any] | None:
             tick('guard_tests')
             if state[x] not in allowed:
                 return None
+        guard=dict(event.guard) if event.write else {}
         old=[]
         for x,v in event.write:
             tick('write_updates')
-            if inferred_old(case,event,x) is None:
+            if _inferred_old(case,guard,x) is None:
                 old.append([x,state[x]])
         for x,v in event.write:
             state[x]=v
@@ -176,8 +180,9 @@ def reverse(case: Case, outcome: dict[str, Any]) -> tuple[int, ...]:
         for x,v in event.write:
             if state[x]!=v:
                 raise Invalid('inverse postcondition failed')
+        guard=dict(event.guard) if event.write else {}
         for x,_ in event.write:
-            value=inferred_old(case,event,x)
+            value=_inferred_old(case,guard,x)
             state[x]=old[x] if value is None else value
         if any(state[x] not in allowed for x,allowed in event.guard):
             raise Invalid('inverse observation failed')

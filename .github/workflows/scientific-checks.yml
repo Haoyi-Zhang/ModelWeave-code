@@ -24,6 +24,8 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: '3.12'
+      - name: Event-local guard equivalence
+        run: python -B tests/test_event_local_guard.py
       - name: Select fresh output on the assigned runner
         shell: bash
         run: echo "REPRO_OUTPUT=$RUNNER_TEMP/p003-scientific-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" >> "$GITHUB_ENV"
