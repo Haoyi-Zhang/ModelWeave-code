@@ -1,0 +1,989 @@
+{
+  "passed": true,
+  "owned_examples": 6,
+  "retention_queries": 44,
+  "successes": 36,
+  "guard_failures": 8,
+  "checked_packets": 44,
+  "partial_policy_comparisons": 144,
+  "positive_action_queries": 32,
+  "gadget_formulas": 6,
+  "gadget_CNF_mask_queries": 768,
+  "source_assignment_helper_comparisons": 18,
+  "original_provider_false_rejection_anchor": true,
+  "stale_receipt_anchor": true,
+  "published_tools_executed": 0,
+  "records": [
+    {
+      "name": "single_provider",
+      "program": {
+        "domains": {
+          "ready": [
+            "off",
+            "on"
+          ],
+          "shown": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "ready": "off",
+          "shown": "off"
+        },
+        "labels": [
+          "prepare",
+          "view",
+          "extra"
+        ],
+        "patches": [
+          {
+            "label": "prepare",
+            "require": {},
+            "assign": {
+              "ready": "on"
+            }
+          },
+          {
+            "label": "view",
+            "require": {
+              "ready": [
+                "on"
+              ]
+            },
+            "assign": {
+              "shown": "on"
+            }
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2,
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0,
+          0
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": [
+              [
+                1,
+                1
+              ]
+            ]
+          }
+        ]
+      },
+      "writer_counts": [
+        1,
+        1
+      ],
+      "queries": [
+        {
+          "mask": 0,
+          "failure_event": null,
+          "state": {
+            "ready": "off",
+            "shown": "off"
+          }
+        },
+        {
+          "mask": 1,
+          "failure_event": null,
+          "state": {
+            "ready": "on",
+            "shown": "off"
+          }
+        },
+        {
+          "mask": 2,
+          "failure_event": 1,
+          "state": {
+            "ready": "off",
+            "shown": "off"
+          }
+        },
+        {
+          "mask": 3,
+          "failure_event": null,
+          "state": {
+            "ready": "on",
+            "shown": "on"
+          }
+        },
+        {
+          "mask": 4,
+          "failure_event": null,
+          "state": {
+            "ready": "off",
+            "shown": "off"
+          }
+        },
+        {
+          "mask": 5,
+          "failure_event": null,
+          "state": {
+            "ready": "on",
+            "shown": "off"
+          }
+        },
+        {
+          "mask": 6,
+          "failure_event": 1,
+          "state": {
+            "ready": "off",
+            "shown": "off"
+          }
+        },
+        {
+          "mask": 7,
+          "failure_event": null,
+          "state": {
+            "ready": "on",
+            "shown": "on"
+          }
+        }
+      ]
+    },
+    {
+      "name": "alternative_providers",
+      "program": {
+        "domains": {
+          "ready": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "ready": "off"
+        },
+        "labels": [
+          "cache",
+          "fallback",
+          "view"
+        ],
+        "patches": [
+          {
+            "label": "cache",
+            "require": {},
+            "assign": {
+              "ready": "on"
+            }
+          },
+          {
+            "label": "fallback",
+            "require": {},
+            "assign": {
+              "ready": "on"
+            }
+          },
+          {
+            "label": "view",
+            "require": {
+              "ready": [
+                "on"
+              ]
+            },
+            "assign": {}
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 2,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "writer_counts": [
+        2
+      ],
+      "queries": [
+        {
+          "mask": 0,
+          "failure_event": null,
+          "state": {
+            "ready": "off"
+          }
+        },
+        {
+          "mask": 1,
+          "failure_event": null,
+          "state": {
+            "ready": "on"
+          }
+        },
+        {
+          "mask": 2,
+          "failure_event": null,
+          "state": {
+            "ready": "on"
+          }
+        },
+        {
+          "mask": 3,
+          "failure_event": null,
+          "state": {
+            "ready": "on"
+          }
+        },
+        {
+          "mask": 4,
+          "failure_event": 2,
+          "state": {
+            "ready": "off"
+          }
+        },
+        {
+          "mask": 5,
+          "failure_event": null,
+          "state": {
+            "ready": "on"
+          }
+        },
+        {
+          "mask": 6,
+          "failure_event": null,
+          "state": {
+            "ready": "on"
+          }
+        },
+        {
+          "mask": 7,
+          "failure_event": null,
+          "state": {
+            "ready": "on"
+          }
+        }
+      ]
+    },
+    {
+      "name": "overwriting_inhibitor",
+      "program": {
+        "domains": {
+          "visible": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "visible": "off"
+        },
+        "labels": [
+          "publish",
+          "hide",
+          "check"
+        ],
+        "patches": [
+          {
+            "label": "publish",
+            "require": {},
+            "assign": {
+              "visible": "on"
+            }
+          },
+          {
+            "label": "hide",
+            "require": {},
+            "assign": {
+              "visible": "off"
+            }
+          },
+          {
+            "label": "check",
+            "require": {
+              "visible": [
+                "off"
+              ]
+            },
+            "assign": {}
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 2,
+            "guard": [
+              [
+                0,
+                [
+                  0
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "writer_counts": [
+        2
+      ],
+      "queries": [
+        {
+          "mask": 0,
+          "failure_event": null,
+          "state": {
+            "visible": "off"
+          }
+        },
+        {
+          "mask": 1,
+          "failure_event": null,
+          "state": {
+            "visible": "on"
+          }
+        },
+        {
+          "mask": 2,
+          "failure_event": null,
+          "state": {
+            "visible": "off"
+          }
+        },
+        {
+          "mask": 3,
+          "failure_event": null,
+          "state": {
+            "visible": "off"
+          }
+        },
+        {
+          "mask": 4,
+          "failure_event": null,
+          "state": {
+            "visible": "off"
+          }
+        },
+        {
+          "mask": 5,
+          "failure_event": 2,
+          "state": {
+            "visible": "on"
+          }
+        },
+        {
+          "mask": 6,
+          "failure_event": null,
+          "state": {
+            "visible": "off"
+          }
+        },
+        {
+          "mask": 7,
+          "failure_event": null,
+          "state": {
+            "visible": "off"
+          }
+        }
+      ]
+    },
+    {
+      "name": "shared_label",
+      "program": {
+        "domains": {
+          "ready": [
+            "off",
+            "on"
+          ],
+          "shown": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "ready": "off",
+          "shown": "off"
+        },
+        "labels": [
+          "bundle",
+          "override",
+          "view"
+        ],
+        "patches": [
+          {
+            "label": "bundle",
+            "require": {},
+            "assign": {
+              "ready": "on"
+            }
+          },
+          {
+            "label": "override",
+            "require": {},
+            "assign": {
+              "ready": "off"
+            }
+          },
+          {
+            "label": "bundle",
+            "require": {},
+            "assign": {
+              "ready": "on"
+            }
+          },
+          {
+            "label": "view",
+            "require": {
+              "ready": [
+                "on"
+              ]
+            },
+            "assign": {
+              "shown": "on"
+            }
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2,
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0,
+          0
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 2,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": [
+              [
+                1,
+                1
+              ]
+            ]
+          }
+        ]
+      },
+      "writer_counts": [
+        3,
+        1
+      ],
+      "queries": [
+        {
+          "mask": 0,
+          "failure_event": null,
+          "state": {
+            "ready": "off",
+            "shown": "off"
+          }
+        },
+        {
+          "mask": 1,
+          "failure_event": null,
+          "state": {
+            "ready": "on",
+            "shown": "off"
+          }
+        },
+        {
+          "mask": 2,
+          "failure_event": null,
+          "state": {
+            "ready": "off",
+            "shown": "off"
+          }
+        },
+        {
+          "mask": 3,
+          "failure_event": null,
+          "state": {
+            "ready": "on",
+            "shown": "off"
+          }
+        },
+        {
+          "mask": 4,
+          "failure_event": 3,
+          "state": {
+            "ready": "off",
+            "shown": "off"
+          }
+        },
+        {
+          "mask": 5,
+          "failure_event": null,
+          "state": {
+            "ready": "on",
+            "shown": "on"
+          }
+        },
+        {
+          "mask": 6,
+          "failure_event": 3,
+          "state": {
+            "ready": "off",
+            "shown": "off"
+          }
+        },
+        {
+          "mask": 7,
+          "failure_event": null,
+          "state": {
+            "ready": "on",
+            "shown": "on"
+          }
+        }
+      ]
+    },
+    {
+      "name": "membership_guard",
+      "program": {
+        "domains": {
+          "mode": [
+            "plain",
+            "dark",
+            "compact"
+          ],
+          "fixed": [
+            "locked"
+          ]
+        },
+        "base": {
+          "mode": "plain",
+          "fixed": "locked"
+        },
+        "labels": [
+          "theme",
+          "dashboard"
+        ],
+        "patches": [
+          {
+            "label": "theme",
+            "require": {},
+            "assign": {
+              "mode": "dark"
+            }
+          },
+          {
+            "label": "dashboard",
+            "require": {
+              "mode": [
+                "plain",
+                "dark"
+              ]
+            },
+            "assign": {
+              "mode": "compact",
+              "fixed": "locked"
+            }
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          3,
+          1
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0,
+          0
+        ],
+        "aspects": 2,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [
+              [
+                0,
+                [
+                  0,
+                  1
+                ]
+              ]
+            ],
+            "write": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      "writer_counts": [
+        2,
+        1
+      ],
+      "queries": [
+        {
+          "mask": 0,
+          "failure_event": null,
+          "state": {
+            "mode": "plain",
+            "fixed": "locked"
+          }
+        },
+        {
+          "mask": 1,
+          "failure_event": null,
+          "state": {
+            "mode": "dark",
+            "fixed": "locked"
+          }
+        },
+        {
+          "mask": 2,
+          "failure_event": null,
+          "state": {
+            "mode": "compact",
+            "fixed": "locked"
+          }
+        },
+        {
+          "mask": 3,
+          "failure_event": null,
+          "state": {
+            "mode": "compact",
+            "fixed": "locked"
+          }
+        }
+      ]
+    },
+    {
+      "name": "receipt_rebase",
+      "program": {
+        "domains": {
+          "mode": [
+            "plain",
+            "dark",
+            "compact"
+          ],
+          "visible": [
+            "off",
+            "on"
+          ],
+          "quota": [
+            "zero",
+            "three"
+          ]
+        },
+        "base": {
+          "mode": "plain",
+          "visible": "on",
+          "quota": "zero"
+        },
+        "labels": [
+          "theme",
+          "privacy",
+          "dashboard"
+        ],
+        "patches": [
+          {
+            "label": "theme",
+            "require": {},
+            "assign": {
+              "mode": "dark"
+            }
+          },
+          {
+            "label": "privacy",
+            "require": {},
+            "assign": {
+              "visible": "off"
+            }
+          },
+          {
+            "label": "dashboard",
+            "require": {
+              "visible": [
+                "off"
+              ]
+            },
+            "assign": {
+              "mode": "compact",
+              "quota": "three"
+            }
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          3,
+          2,
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0,
+          1,
+          0
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 2,
+            "guard": [
+              [
+                1,
+                [
+                  0
+                ]
+              ]
+            ],
+            "write": [
+              [
+                0,
+                2
+              ],
+              [
+                2,
+                1
+              ]
+            ]
+          }
+        ]
+      },
+      "writer_counts": [
+        2,
+        1,
+        1
+      ],
+      "queries": [
+        {
+          "mask": 0,
+          "failure_event": null,
+          "state": {
+            "mode": "plain",
+            "visible": "on",
+            "quota": "zero"
+          }
+        },
+        {
+          "mask": 1,
+          "failure_event": null,
+          "state": {
+            "mode": "dark",
+            "visible": "on",
+            "quota": "zero"
+          }
+        },
+        {
+          "mask": 2,
+          "failure_event": null,
+          "state": {
+            "mode": "plain",
+            "visible": "off",
+            "quota": "zero"
+          }
+        },
+        {
+          "mask": 3,
+          "failure_event": null,
+          "state": {
+            "mode": "dark",
+            "visible": "off",
+            "quota": "zero"
+          }
+        },
+        {
+          "mask": 4,
+          "failure_event": 2,
+          "state": {
+            "mode": "plain",
+            "visible": "on",
+            "quota": "zero"
+          }
+        },
+        {
+          "mask": 5,
+          "failure_event": 2,
+          "state": {
+            "mode": "dark",
+            "visible": "on",
+            "quota": "zero"
+          }
+        },
+        {
+          "mask": 6,
+          "failure_event": null,
+          "state": {
+            "mode": "compact",
+            "visible": "off",
+            "quota": "three"
+          }
+        },
+        {
+          "mask": 7,
+          "failure_event": null,
+          "state": {
+            "mode": "compact",
+            "visible": "off",
+            "quota": "three"
+          }
+        }
+      ]
+    }
+  ]
+}

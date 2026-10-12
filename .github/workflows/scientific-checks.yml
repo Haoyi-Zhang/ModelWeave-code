@@ -26,6 +26,10 @@ jobs:
           python-version: '3.12'
       - name: Event-local guard equivalence
         run: python -B tests/test_event_local_guard.py
+      - name: Named updates and fixed-sequence action semantics
+        run: python -B tests/test_update_bridge.py
+      - name: Update contract and exact two-write constraints
+        run: python -B tests/test_update_contract.py
       - name: Select fresh output on the assigned runner
         shell: bash
         run: echo "REPRO_OUTPUT=$RUNNER_TEMP/p003-scientific-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" >> "$GITHUB_ENV"

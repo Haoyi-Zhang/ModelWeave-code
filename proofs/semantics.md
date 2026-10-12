@@ -705,3 +705,98 @@ The construction shows why a bound on local explanations does not bound global
 policy explanations. It also distinguishes cardinality-minimum from merely
 inclusion-minimal: here every proper subpolicy is feasible, so both notions
 coincide for a proved reason, not by terminology.
+
+## 15. Closed named updates and fixed-sequence actions
+
+A named program declares a nonempty finite cell catalog, a finite nonempty domain
+of literal names for each cell, a complete base state, a finite label catalog,
+and an ordered patch list. A patch [a] require G; assign W tests every unary
+membership requirement on the pre-state, then assigns its constants atomically.
+A selected patch with a false requirement stops execution; it is not silently
+skipped. Selection keeps all occurrences of a label. The full patch list is
+required to execute. There are no expressions, computed targets, graph incidence,
+or external source-tool effects in this interface.
+
+**Lemma L27 (named-update preservation).** Bijections for cell names, each cell's
+domain members, and labels encode a named program as a scalar trace preserving
+every selected execution, first failure position, successful final state, and
+contextual receipt. Writer-occurrence counts and partial policies are preserved.
+
+**Proof.** Let E(sigma) code a named state cellwise. The encoded base is E(B).
+Induct over original patch positions. A label and its code have the same selection
+bit, so both paths skip the same occurrence. At a selected patch, value bijections
+give sigma(x) in G(x) iff E(sigma)(code(x)) lies in the coded accepting set. Thus
+both fail at that position or both are enabled. They read corresponding old
+values before any write and apply corresponding constant maps, maintaining the
+state invariant. Domain and guard cardinalities are preserved; the same old
+coordinates are inferable and the same others are stored in the receipt.
+Induction establishes the successful states and receipts, and T3 gives reversal.
+The compiler introduces no occurrences or assignments, so writer counts agree.
+A label bijection preserves kept/removed sets and all their completions. QED.
+
+**Lemma L28 (positive-action preservation).** For a named program whose every
+requirement is singleton or the entire cell domain, a positive-precondition
+add/delete action sequence preserves selected execution and first failure under
+the recorded order and whole-label selection.
+
+**Proof.** Represent a state by I(sigma)={(x,sigma(x)): x is a cell}, with exactly
+one proposition for each cell. A singleton requirement contributes (x,v) to the
+precondition; a full-domain test is omitted. This precondition is a subset of
+I(sigma) iff all source requirements hold. For assignment x:=v, put (x,v) in the
+add list and every (x,u) with u different from v in the delete list. The lists are
+disjoint, and (I minus delete) union add changes exactly the assigned cell values.
+It maintains exactly one proposition per cell, including idempotent assignments.
+Unassigned cells are unchanged. Induct over the selected occurrences, retaining
+their original positions and labels. Enabled steps agree and a false requirement
+causes the same first failure. QED.
+
+This is conventional finite-domain/one-hot state coding, not a novelty claim about
+STRIPS or a new source language. Its size is polynomial in explicit domains and
+maps. In the Boolean case it uses two rails. A negative read is a positive read
+of the zero rail, but writes have delete effects. Proper nonsingleton membership
+tests need disjunction and are rejected by this action compiler; they remain
+valid trace guards. Actions alone do not supply overwritten predecessors: receipts
+come from selected replay. A final forced, write-free guard can encode a conjunctive
+unary goal if
+the full history satisfies it, without changing any writer count. The translation
+does not authorize arbitrary planning insertion, repetition, or reordering, and
+its source-cell writer bound is not a bound on STRIPS effect-list cardinality.
+
+## 16. The exact mixed CNF of the two-write construction
+
+Let ell_jk be the tag for padded clause literal L_k, and use the tags p_i,n_i,d,r,q_j
+from T25. On every mask, before imposing a request, the trace's retention predicate
+is exactly the conjunction of
+
+    (not r OR p_i OR n_i) AND (not n_i OR not p_i OR d)  for each i,
+    (not q_j OR ell_j2 OR ell_j3) AND (not r OR ell_j1 OR q_j)  for each j.
+
+**Derivation.** Reader r's y_i guard accepts a one written by p_i or n_i.
+Negative event n_i's zero read of x_i fails precisely when p_i is retained and
+reset d is absent. Helper q_j's child read needs the second or third literal's
+writer; the root read of r needs the first literal's writer or q_j. There are
+no other guards. T6 therefore makes these conditions jointly exact. Repeated
+literal tags are identified and tautologies can be removed without changing truth.
+
+**Lemma L29 (helper projection under the request).** With r present and d absent,
+the variable clauses enforce exactly one truth aspect per variable. For every
+such assignment, a helper choice exists iff the source 3-CNF is satisfied.
+
+**Proof.** The first pair becomes (p_i OR n_i) AND (not p_i OR not n_i). For a
+clause the helper conditions become (not q_j OR ell_j2 OR ell_j3) AND
+(ell_j1 OR q_j). If ell_j1 is true, q_j=false satisfies them; if it is false,
+q_j must be true and ell_j2 OR ell_j3 must hold. Eliminating that helper gives
+exactly ell_j1 OR ell_j2 OR ell_j3. Helpers are separate labels, so their choices
+compose across clauses. Under exact-one variable selection these are precisely
+the source literals. QED.
+
+Every unpinned clause accepts both all-zero and all-one masks. Bare feasibility is
+trivial. Choice clauses are dual-Horn, while inhibition clauses are Horn; their
+combination with the opposite policy facts realizes the reduction. Choice alone
+does not prove NP-hardness. Helpers are visible aspect tags of the constructed
+trace, existentially chosen in policy completion. This is different from the
+auxiliary-free representation question of T22.
+
+The portable update-contract regression tests L27--L29 on explicitly stored owned
+fixtures, recoded domains and labels, and exact target mask/source assignment
+comparisons. These finite checks are not proofs or source-tool extraction.

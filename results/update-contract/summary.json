@@ -1,0 +1,3552 @@
+{
+  "passed": true,
+  "named_programs": 8,
+  "coding_variants": 16,
+  "retention_queries": 70,
+  "action_queries": 62,
+  "guard_failures": 14,
+  "checked_query_packets": 70,
+  "one_write_partial_policies": 80,
+  "proper_membership_action_rejections": 2,
+  "invalid_program_compiler_rejections": 8,
+  "gadget_formulas": 75,
+  "gadget_CNF_mask_queries": 4880,
+  "assignment_helper_projections": 154,
+  "label_coupling_anchor": true,
+  "fixed_order_anchor": true,
+  "idempotent_occurrence_anchor": true,
+  "published_tools_executed": 0,
+  "records": [
+    {
+      "name": "interleaved_one_write_cycle",
+      "encoding": "declared",
+      "program": {
+        "domains": {
+          "x": [
+            "off",
+            "on"
+          ],
+          "y": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "x": "off",
+          "y": "off"
+        },
+        "labels": [
+          "alpha",
+          "beta",
+          "unused"
+        ],
+        "patches": [
+          {
+            "label": "alpha",
+            "require": {},
+            "assign": {
+              "x": "on"
+            }
+          },
+          {
+            "label": "beta",
+            "require": {
+              "x": [
+                "on"
+              ]
+            },
+            "assign": {
+              "y": "on"
+            }
+          },
+          {
+            "label": "alpha",
+            "require": {
+              "y": [
+                "on"
+              ]
+            },
+            "assign": {}
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2,
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0,
+          0
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": [
+              [
+                1,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 0,
+            "guard": [
+              [
+                1,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "writer_counts": [
+        1,
+        1
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "x": "off",
+            "y": "off"
+          }
+        },
+        {
+          "kept": [
+            "alpha"
+          ],
+          "failure_event": 2,
+          "state": {
+            "x": "on",
+            "y": "off"
+          }
+        },
+        {
+          "kept": [
+            "alpha",
+            "beta"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on",
+            "y": "on"
+          }
+        },
+        {
+          "kept": [
+            "alpha",
+            "beta",
+            "unused"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on",
+            "y": "on"
+          }
+        },
+        {
+          "kept": [
+            "alpha",
+            "unused"
+          ],
+          "failure_event": 2,
+          "state": {
+            "x": "on",
+            "y": "off"
+          }
+        },
+        {
+          "kept": [
+            "beta"
+          ],
+          "failure_event": 1,
+          "state": {
+            "x": "off",
+            "y": "off"
+          }
+        },
+        {
+          "kept": [
+            "beta",
+            "unused"
+          ],
+          "failure_event": 1,
+          "state": {
+            "x": "off",
+            "y": "off"
+          }
+        },
+        {
+          "kept": [
+            "unused"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "off",
+            "y": "off"
+          }
+        }
+      ]
+    },
+    {
+      "name": "interleaved_one_write_cycle",
+      "encoding": "reversed_codes",
+      "program": {
+        "domains": {
+          "y": [
+            "on",
+            "off"
+          ],
+          "x": [
+            "on",
+            "off"
+          ]
+        },
+        "base": {
+          "y": "off",
+          "x": "off"
+        },
+        "labels": [
+          "unused",
+          "beta",
+          "alpha"
+        ],
+        "patches": [
+          {
+            "label": "alpha",
+            "require": {},
+            "assign": {
+              "x": "on"
+            }
+          },
+          {
+            "label": "beta",
+            "require": {
+              "x": [
+                "on"
+              ]
+            },
+            "assign": {
+              "y": "on"
+            }
+          },
+          {
+            "label": "alpha",
+            "require": {
+              "y": [
+                "on"
+              ]
+            },
+            "assign": {}
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2,
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          1,
+          1
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 2,
+            "guard": [],
+            "write": [
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [
+              [
+                1,
+                [
+                  0
+                ]
+              ]
+            ],
+            "write": [
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 2,
+            "guard": [
+              [
+                0,
+                [
+                  0
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "writer_counts": [
+        1,
+        1
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "y": "off",
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "alpha"
+          ],
+          "failure_event": 2,
+          "state": {
+            "y": "off",
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "alpha",
+            "beta"
+          ],
+          "failure_event": null,
+          "state": {
+            "y": "on",
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "alpha",
+            "beta",
+            "unused"
+          ],
+          "failure_event": null,
+          "state": {
+            "y": "on",
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "alpha",
+            "unused"
+          ],
+          "failure_event": 2,
+          "state": {
+            "y": "off",
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "beta"
+          ],
+          "failure_event": 1,
+          "state": {
+            "y": "off",
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "beta",
+            "unused"
+          ],
+          "failure_event": 1,
+          "state": {
+            "y": "off",
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "unused"
+          ],
+          "failure_event": null,
+          "state": {
+            "y": "off",
+            "x": "off"
+          }
+        }
+      ]
+    },
+    {
+      "name": "simultaneous_prestate",
+      "encoding": "declared",
+      "program": {
+        "domains": {
+          "x": [
+            "off",
+            "on"
+          ],
+          "y": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "x": "off",
+          "y": "on"
+        },
+        "labels": [
+          "replace",
+          "read"
+        ],
+        "patches": [
+          {
+            "label": "replace",
+            "require": {
+              "x": [
+                "off"
+              ],
+              "y": [
+                "on"
+              ]
+            },
+            "assign": {
+              "x": "on",
+              "y": "off"
+            }
+          },
+          {
+            "label": "read",
+            "require": {
+              "x": [
+                "on"
+              ],
+              "y": [
+                "off"
+              ]
+            },
+            "assign": {}
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2,
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0,
+          1
+        ],
+        "aspects": 2,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [
+              [
+                0,
+                [
+                  0
+                ]
+              ],
+              [
+                1,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ],
+              [
+                1,
+                [
+                  0
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "writer_counts": [
+        1,
+        1
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "x": "off",
+            "y": "on"
+          }
+        },
+        {
+          "kept": [
+            "read"
+          ],
+          "failure_event": 1,
+          "state": {
+            "x": "off",
+            "y": "on"
+          }
+        },
+        {
+          "kept": [
+            "read",
+            "replace"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on",
+            "y": "off"
+          }
+        },
+        {
+          "kept": [
+            "replace"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on",
+            "y": "off"
+          }
+        }
+      ]
+    },
+    {
+      "name": "simultaneous_prestate",
+      "encoding": "reversed_codes",
+      "program": {
+        "domains": {
+          "y": [
+            "on",
+            "off"
+          ],
+          "x": [
+            "on",
+            "off"
+          ]
+        },
+        "base": {
+          "y": "on",
+          "x": "off"
+        },
+        "labels": [
+          "read",
+          "replace"
+        ],
+        "patches": [
+          {
+            "label": "replace",
+            "require": {
+              "y": [
+                "on"
+              ],
+              "x": [
+                "off"
+              ]
+            },
+            "assign": {
+              "y": "off",
+              "x": "on"
+            }
+          },
+          {
+            "label": "read",
+            "require": {
+              "y": [
+                "off"
+              ],
+              "x": [
+                "on"
+              ]
+            },
+            "assign": {}
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2,
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0,
+          1
+        ],
+        "aspects": 2,
+        "events": [
+          {
+            "tag": 1,
+            "guard": [
+              [
+                0,
+                [
+                  0
+                ]
+              ],
+              [
+                1,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 0,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ],
+              [
+                1,
+                [
+                  0
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "writer_counts": [
+        1,
+        1
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "y": "on",
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "read"
+          ],
+          "failure_event": 1,
+          "state": {
+            "y": "on",
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "read",
+            "replace"
+          ],
+          "failure_event": null,
+          "state": {
+            "y": "off",
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "replace"
+          ],
+          "failure_event": null,
+          "state": {
+            "y": "off",
+            "x": "on"
+          }
+        }
+      ]
+    },
+    {
+      "name": "vacuous_full_domain_guard",
+      "encoding": "declared",
+      "program": {
+        "domains": {
+          "x": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "x": "off"
+        },
+        "labels": [
+          "read"
+        ],
+        "patches": [
+          {
+            "label": "read",
+            "require": {
+              "x": [
+                "on",
+                "off"
+              ]
+            },
+            "assign": {}
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 1,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [
+              [
+                0,
+                [
+                  0,
+                  1
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "writer_counts": [
+        0
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "read"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "off"
+          }
+        }
+      ]
+    },
+    {
+      "name": "vacuous_full_domain_guard",
+      "encoding": "reversed_codes",
+      "program": {
+        "domains": {
+          "x": [
+            "on",
+            "off"
+          ]
+        },
+        "base": {
+          "x": "off"
+        },
+        "labels": [
+          "read"
+        ],
+        "patches": [
+          {
+            "label": "read",
+            "require": {
+              "x": [
+                "off",
+                "on"
+              ]
+            },
+            "assign": {}
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          1
+        ],
+        "aspects": 1,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [
+              [
+                0,
+                [
+                  0,
+                  1
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "writer_counts": [
+        0
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "read"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "off"
+          }
+        }
+      ]
+    },
+    {
+      "name": "finite_one_hot",
+      "encoding": "declared",
+      "program": {
+        "domains": {
+          "mode": [
+            "plain",
+            "dark",
+            "compact"
+          ],
+          "fixed": [
+            "locked"
+          ]
+        },
+        "base": {
+          "mode": "plain",
+          "fixed": "locked"
+        },
+        "labels": [
+          "theme",
+          "view"
+        ],
+        "patches": [
+          {
+            "label": "theme",
+            "require": {},
+            "assign": {
+              "mode": "dark"
+            }
+          },
+          {
+            "label": "view",
+            "require": {
+              "mode": [
+                "dark"
+              ],
+              "fixed": [
+                "locked"
+              ]
+            },
+            "assign": {
+              "mode": "compact",
+              "fixed": "locked"
+            }
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          3,
+          1
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0,
+          0
+        ],
+        "aspects": 2,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ],
+              [
+                1,
+                [
+                  0
+                ]
+              ]
+            ],
+            "write": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      "writer_counts": [
+        2,
+        1
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "mode": "plain",
+            "fixed": "locked"
+          }
+        },
+        {
+          "kept": [
+            "theme"
+          ],
+          "failure_event": null,
+          "state": {
+            "mode": "dark",
+            "fixed": "locked"
+          }
+        },
+        {
+          "kept": [
+            "theme",
+            "view"
+          ],
+          "failure_event": null,
+          "state": {
+            "mode": "compact",
+            "fixed": "locked"
+          }
+        },
+        {
+          "kept": [
+            "view"
+          ],
+          "failure_event": 1,
+          "state": {
+            "mode": "plain",
+            "fixed": "locked"
+          }
+        }
+      ]
+    },
+    {
+      "name": "finite_one_hot",
+      "encoding": "reversed_codes",
+      "program": {
+        "domains": {
+          "fixed": [
+            "locked"
+          ],
+          "mode": [
+            "compact",
+            "dark",
+            "plain"
+          ]
+        },
+        "base": {
+          "fixed": "locked",
+          "mode": "plain"
+        },
+        "labels": [
+          "view",
+          "theme"
+        ],
+        "patches": [
+          {
+            "label": "theme",
+            "require": {},
+            "assign": {
+              "mode": "dark"
+            }
+          },
+          {
+            "label": "view",
+            "require": {
+              "fixed": [
+                "locked"
+              ],
+              "mode": [
+                "dark"
+              ]
+            },
+            "assign": {
+              "fixed": "locked",
+              "mode": "compact"
+            }
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          1,
+          3
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0,
+          2
+        ],
+        "aspects": 2,
+        "events": [
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                1,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 0,
+            "guard": [
+              [
+                0,
+                [
+                  0
+                ]
+              ],
+              [
+                1,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      "writer_counts": [
+        1,
+        2
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "fixed": "locked",
+            "mode": "plain"
+          }
+        },
+        {
+          "kept": [
+            "theme"
+          ],
+          "failure_event": null,
+          "state": {
+            "fixed": "locked",
+            "mode": "dark"
+          }
+        },
+        {
+          "kept": [
+            "theme",
+            "view"
+          ],
+          "failure_event": null,
+          "state": {
+            "fixed": "locked",
+            "mode": "compact"
+          }
+        },
+        {
+          "kept": [
+            "view"
+          ],
+          "failure_event": 1,
+          "state": {
+            "fixed": "locked",
+            "mode": "plain"
+          }
+        }
+      ]
+    },
+    {
+      "name": "proper_membership_guard",
+      "encoding": "declared",
+      "program": {
+        "domains": {
+          "mode": [
+            "plain",
+            "dark",
+            "compact"
+          ]
+        },
+        "base": {
+          "mode": "plain"
+        },
+        "labels": [
+          "theme",
+          "view"
+        ],
+        "patches": [
+          {
+            "label": "theme",
+            "require": {},
+            "assign": {
+              "mode": "dark"
+            }
+          },
+          {
+            "label": "view",
+            "require": {
+              "mode": [
+                "plain",
+                "dark"
+              ]
+            },
+            "assign": {
+              "mode": "compact"
+            }
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          3
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 2,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [
+              [
+                0,
+                [
+                  0,
+                  1
+                ]
+              ]
+            ],
+            "write": [
+              [
+                0,
+                2
+              ]
+            ]
+          }
+        ]
+      },
+      "writer_counts": [
+        2
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "mode": "plain"
+          }
+        },
+        {
+          "kept": [
+            "theme"
+          ],
+          "failure_event": null,
+          "state": {
+            "mode": "dark"
+          }
+        },
+        {
+          "kept": [
+            "theme",
+            "view"
+          ],
+          "failure_event": null,
+          "state": {
+            "mode": "compact"
+          }
+        },
+        {
+          "kept": [
+            "view"
+          ],
+          "failure_event": null,
+          "state": {
+            "mode": "compact"
+          }
+        }
+      ]
+    },
+    {
+      "name": "proper_membership_guard",
+      "encoding": "reversed_codes",
+      "program": {
+        "domains": {
+          "mode": [
+            "compact",
+            "dark",
+            "plain"
+          ]
+        },
+        "base": {
+          "mode": "plain"
+        },
+        "labels": [
+          "view",
+          "theme"
+        ],
+        "patches": [
+          {
+            "label": "theme",
+            "require": {},
+            "assign": {
+              "mode": "dark"
+            }
+          },
+          {
+            "label": "view",
+            "require": {
+              "mode": [
+                "dark",
+                "plain"
+              ]
+            },
+            "assign": {
+              "mode": "compact"
+            }
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          3
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          2
+        ],
+        "aspects": 2,
+        "events": [
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 0,
+            "guard": [
+              [
+                0,
+                [
+                  1,
+                  2
+                ]
+              ]
+            ],
+            "write": [
+              [
+                0,
+                0
+              ]
+            ]
+          }
+        ]
+      },
+      "writer_counts": [
+        2
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "mode": "plain"
+          }
+        },
+        {
+          "kept": [
+            "theme"
+          ],
+          "failure_event": null,
+          "state": {
+            "mode": "dark"
+          }
+        },
+        {
+          "kept": [
+            "theme",
+            "view"
+          ],
+          "failure_event": null,
+          "state": {
+            "mode": "compact"
+          }
+        },
+        {
+          "kept": [
+            "view"
+          ],
+          "failure_event": null,
+          "state": {
+            "mode": "compact"
+          }
+        }
+      ]
+    },
+    {
+      "name": "same_label_anchor",
+      "encoding": "declared",
+      "program": {
+        "domains": {
+          "x": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "x": "off"
+        },
+        "labels": [
+          "old",
+          "bundle"
+        ],
+        "patches": [
+          {
+            "label": "old",
+            "require": {},
+            "assign": {
+              "x": "off"
+            }
+          },
+          {
+            "label": "bundle",
+            "require": {},
+            "assign": {
+              "x": "on"
+            }
+          },
+          {
+            "label": "bundle",
+            "require": {
+              "x": [
+                "on"
+              ]
+            },
+            "assign": {}
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 2,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "writer_counts": [
+        2
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "bundle"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "bundle",
+            "old"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "old"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "off"
+          }
+        }
+      ]
+    },
+    {
+      "name": "same_label_anchor",
+      "encoding": "reversed_codes",
+      "program": {
+        "domains": {
+          "x": [
+            "on",
+            "off"
+          ]
+        },
+        "base": {
+          "x": "off"
+        },
+        "labels": [
+          "bundle",
+          "old"
+        ],
+        "patches": [
+          {
+            "label": "old",
+            "require": {},
+            "assign": {
+              "x": "off"
+            }
+          },
+          {
+            "label": "bundle",
+            "require": {},
+            "assign": {
+              "x": "on"
+            }
+          },
+          {
+            "label": "bundle",
+            "require": {
+              "x": [
+                "on"
+              ]
+            },
+            "assign": {}
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          1
+        ],
+        "aspects": 2,
+        "events": [
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 0,
+            "guard": [
+              [
+                0,
+                [
+                  0
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "writer_counts": [
+        2
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "bundle"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "bundle",
+            "old"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "old"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "off"
+          }
+        }
+      ]
+    },
+    {
+      "name": "idempotent_writer_occurrences",
+      "encoding": "declared",
+      "program": {
+        "domains": {
+          "x": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "x": "off"
+        },
+        "labels": [
+          "first",
+          "second",
+          "read"
+        ],
+        "patches": [
+          {
+            "label": "first",
+            "require": {},
+            "assign": {
+              "x": "on"
+            }
+          },
+          {
+            "label": "second",
+            "require": {},
+            "assign": {
+              "x": "on"
+            }
+          },
+          {
+            "label": "read",
+            "require": {
+              "x": [
+                "on"
+              ]
+            },
+            "assign": {}
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 2,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "writer_counts": [
+        2
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "first"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "first",
+            "read"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "first",
+            "read",
+            "second"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "first",
+            "second"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "read"
+          ],
+          "failure_event": 2,
+          "state": {
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "read",
+            "second"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "second"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        }
+      ]
+    },
+    {
+      "name": "idempotent_writer_occurrences",
+      "encoding": "reversed_codes",
+      "program": {
+        "domains": {
+          "x": [
+            "on",
+            "off"
+          ]
+        },
+        "base": {
+          "x": "off"
+        },
+        "labels": [
+          "read",
+          "second",
+          "first"
+        ],
+        "patches": [
+          {
+            "label": "first",
+            "require": {},
+            "assign": {
+              "x": "on"
+            }
+          },
+          {
+            "label": "second",
+            "require": {},
+            "assign": {
+              "x": "on"
+            }
+          },
+          {
+            "label": "read",
+            "require": {
+              "x": [
+                "on"
+              ]
+            },
+            "assign": {}
+          }
+        ]
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          1
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 2,
+            "guard": [],
+            "write": [
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 0,
+            "guard": [
+              [
+                0,
+                [
+                  0
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "writer_counts": [
+        2
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "first"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "first",
+            "read"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "first",
+            "read",
+            "second"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "first",
+            "second"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "read"
+          ],
+          "failure_event": 2,
+          "state": {
+            "x": "off"
+          }
+        },
+        {
+          "kept": [
+            "read",
+            "second"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        },
+        {
+          "kept": [
+            "second"
+          ],
+          "failure_event": null,
+          "state": {
+            "x": "on"
+          }
+        }
+      ]
+    },
+    {
+      "name": "zero_label_empty_history",
+      "encoding": "declared",
+      "program": {
+        "domains": {
+          "fixed": [
+            "locked"
+          ]
+        },
+        "base": {
+          "fixed": "locked"
+        },
+        "labels": [],
+        "patches": []
+      },
+      "case": {
+        "domains": [
+          1
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 0,
+        "events": []
+      },
+      "writer_counts": [
+        0
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "fixed": "locked"
+          }
+        }
+      ]
+    },
+    {
+      "name": "zero_label_empty_history",
+      "encoding": "reversed_codes",
+      "program": {
+        "domains": {
+          "fixed": [
+            "locked"
+          ]
+        },
+        "base": {
+          "fixed": "locked"
+        },
+        "labels": [],
+        "patches": []
+      },
+      "case": {
+        "domains": [
+          1
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 0,
+        "events": []
+      },
+      "writer_counts": [
+        0
+      ],
+      "queries": [
+        {
+          "kept": [],
+          "failure_event": null,
+          "state": {
+            "fixed": "locked"
+          }
+        }
+      ]
+    }
+  ],
+  "reduction_records": [
+    {
+      "variables": 1,
+      "formula": [],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 12
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 16
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 20
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 20
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 16
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 16
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 20
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 20
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 16
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 30
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 30
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 22
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 24
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 26
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 26
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        false,
+        false
+      ],
+      "valid_target_masks": 18
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 30
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 36
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 36
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 34
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 34
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 26
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 30
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 36
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 36
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 34
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 34
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 26
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 22
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 24
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 22
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 24
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 24
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 22
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          -1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 24
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 22
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 26
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 34
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 34
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 36
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 36
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 30
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        false,
+        true
+      ],
+      "valid_target_masks": 26
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 34
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 34
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 36
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        true
+      ],
+      "valid_target_masks": 36
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 30
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        false,
+        false
+      ],
+      "valid_target_masks": 18
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 26
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 26
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 24
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 22
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 30
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 30
+    },
+    {
+      "variables": 1,
+      "formula": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false
+      ],
+      "valid_target_masks": 28
+    },
+    {
+      "variables": 2,
+      "formula": [
+        [
+          1,
+          -2,
+          1
+        ],
+        [
+          -1,
+          2,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "valid_target_masks": 94
+    },
+    {
+      "variables": 2,
+      "formula": [
+        [
+          1,
+          2,
+          -2
+        ],
+        [
+          -1,
+          -1,
+          -1
+        ]
+      ],
+      "source_truth": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "valid_target_masks": 84
+    }
+  ]
+}

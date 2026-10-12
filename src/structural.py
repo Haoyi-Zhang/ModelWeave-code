@@ -5,6 +5,7 @@ solver nor form part of the independent checker. The general results are proved
 in proofs/semantics.md; executable experiments remain bounded.
 """
 from __future__ import annotations
+from collections import deque
 from typing import Any
 from engine import Case, Invalid
 from generate import make, ev
@@ -76,15 +77,18 @@ therefore gives the minimum collateral deletion count without search.
 """
     if type(on) is not int or type(off) is not int or min(on, off) < 0 or on & off or (on | off) & ~case.full:
         raise Invalid('invalid partial retention policy')
-    edges = one_writer_edges(case)
+    dependents = [[] for _ in range(case.aspects)]
+    for reader, writer in one_writer_edges(case):
+        dependents[writer].append(reader)
     blocked = off
-    while True:
-        previous = blocked
-        for reader, writer in edges:
-            if blocked & (1 << writer):
-                blocked |= 1 << reader
-        if previous == blocked:
-            break
+    pending = deque(a for a in range(case.aspects) if off & (1 << a))
+    while pending:
+        writer = pending.popleft()
+        for reader in dependents[writer]:
+            bit = 1 << reader
+            if not blocked & bit:
+                blocked |= bit
+                pending.append(reader)
     return None if on & blocked else case.full & ~blocked
 
 
