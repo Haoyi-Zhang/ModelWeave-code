@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "hand_written_models": 9,
+  "label_mask_queries": 45,
+  "local_projection_queries": 50,
+  "partial_policy_queries": 133,
+  "invalid_interface_rejections": 10,
+  "supporter_quantifier": "exists",
+  "cost_or_timing_comparison": false,
+  "published_tools_executed": 0,
+  "rejections": [
+    {
+      "name": "membership_precondition",
+      "operation": "compile_sas",
+      "rejected": true
+    },
+    {
+      "name": "membership_precondition",
+      "operation": "encode_supporters",
+      "rejected": true
+    },
+    {
+      "name": "computed_effect",
+      "operation": "compile_sas",
+      "rejected": true
+    },
+    {
+      "name": "computed_effect",
+      "operation": "encode_supporters",
+      "rejected": true
+    },
+    {
+      "name": "nonexecutable_full_plan",
+      "operation": "compile_sas",
+      "rejected": true
+    },
+    {
+      "name": "nonexecutable_full_plan",
+      "operation": "encode_supporters",
+      "rejected": true
+    },
+    {
+      "name": "out_of_domain_goal",
+      "operation": "compile_sas",
+      "rejected": true
+    },
+    {
+      "name": "out_of_domain_goal",
+      "operation": "encode_supporters",
+      "rejected": true
+    },
+    {
+      "name": "unreached_full_plan_goal",
+      "operation": "compile_sas",
+      "rejected": true
+    },
+    {
+      "name": "unreached_full_plan_goal",
+      "operation": "encode_supporters",
+      "rejected": true
+    }
+  ]
+}

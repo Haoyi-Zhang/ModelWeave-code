@@ -1,8 +1,9 @@
 """Finite adversarial tests. They do not constitute a proof-assistant development."""
-import copy,itertools,json,random,resource,sys,time,unittest
+import copy,itertools,json,random,sys,time,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 import engine,producer,checker,oracle,generate,baselines
+from run_resources import peak_rss_kib
 EVIDENCE={}
 class Semantics(unittest.TestCase):
     def test_named_masks_and_all_policies(self):
@@ -184,7 +185,7 @@ if __name__=='__main__':
     result=unittest.TextTestRunner(verbosity=2).run(suite)
     data={'passed':result.wasSuccessful(),'test_methods':result.testsRun,'failures':len(result.failures),'errors':len(result.errors),
           'evidence':EVIDENCE,'cpu_seconds':time.process_time()-cpu,'wall_seconds':time.perf_counter()-wall,
-          'peak_rss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+          'peak_rss_kib':peak_rss_kib(),
           'counters':{'producer':engine.COUNTS,'checker':checker.COUNTS,'oracle':oracle.COUNTS,'baselines':baselines.COUNTS}}
     if len(sys.argv)>1:Path(sys.argv[1]).write_text(json.dumps(data,indent=2)+'\n')
     else:print(json.dumps(data,indent=2))

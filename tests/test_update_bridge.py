@@ -2,7 +2,7 @@
 
 The source interpreter and positive-precondition action interpreter below do not
 call engine execution, normalization, or the compiler. No third-party tool runs.
-Without --output this entrypoint writes nothing; explicit output stays in P003.
+Without --output this entrypoint writes nothing; an explicit output must be new.
 """
 from __future__ import annotations
 import argparse
@@ -230,12 +230,13 @@ if __name__ == '__main__':
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     if args.output:
-        # Bound this newly added writer to the owned candidate, before execution.
         destination = args.output.resolve()
-        if not destination.is_relative_to(ROOT.parent.resolve()):
-            parser.error('output must stay inside P003')
+        if destination.exists():
+            parser.error('output must be a new file')
     report = run()
     if args.output:
         destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+        with destination.open('x', encoding='utf-8') as output:
+            json.dump(report, output, indent=2)
+            output.write('\n')
     print(json.dumps({k: v for k, v in report.items() if k != 'records'}, indent=2))

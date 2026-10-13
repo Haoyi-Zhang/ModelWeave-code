@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Reproduce the frozen finite campaign in resumable bounded chunks (one worker)."""
 from __future__ import annotations
-import argparse,csv,gzip,itertools,json,os,resource,sys,time
+import argparse,csv,gzip,itertools,json,os,sys,time
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent/'src'))
 import engine,producer,checker,oracle,generate,baselines
+from run_resources import peak_rss_kib
 TOTAL=50000
 CHUNK=1000
 SEED=27182818
@@ -87,7 +88,8 @@ def aggregate(out):
     ms=sorted(out.glob('chunk-*.json'));totals={};counters={};cpu=0;wall=0;peak=0;maximum=0
     for p in ms:
         d=json.loads(p.read_text());add_dict(totals,d['metrics']);add_dict(counters,d['counters'])
-        cpu+=d['cpu_seconds'];wall+=d['wall_seconds'];peak=max(peak,d['peak_rss_kib']);maximum=max(maximum,d['max_case_seconds'])
+        cpu+=d['cpu_seconds'];wall+=d['wall_seconds'];maximum=max(maximum,d['max_case_seconds'])
+        peak=None if peak is None or d['peak_rss_kib'] is None else max(peak,d['peak_rss_kib'])
     summary={'status':'finite_checks_passed_not_mechanized_general_proof','complete':totals.get('cases',0)==TOTAL,
              'chunks':len(ms),'metrics':totals,'counters':counters,'cpu_seconds':cpu,'wall_seconds':wall,
              'peak_rss_kib':peak,'max_case_seconds':maximum,'workers':1,'seed':SEED}
@@ -117,8 +119,9 @@ def run_chunk(out,chunk):
             for r in records:f.write((dump(r)+'\n').encode())
     report={'start':start,'stop':stop,'metrics':metrics(records),'counters':counts(),
             'cpu_seconds':time.process_time()-cpu,'wall_seconds':time.perf_counter()-wall,
-            'peak_rss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,'max_case_seconds':maximum}
-    if report['peak_rss_kib']>2500*1024:raise RuntimeError('memory budget exceeded')
+            'peak_rss_kib':peak_rss_kib(),'max_case_seconds':maximum}
+    if report['peak_rss_kib'] is not None and report['peak_rss_kib']>2500*1024:
+        raise RuntimeError('memory budget exceeded')
     tmp=meta.with_suffix('.tmp');tmp.write_text(json.dumps(report,indent=2)+'\n');os.replace(tmp,meta)
     print(dump({'chunk':chunk,'cases':len(records),'cpu_seconds':report['cpu_seconds']}),flush=True)
 

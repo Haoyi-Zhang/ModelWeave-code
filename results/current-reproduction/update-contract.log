@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "named_programs": 8,
+  "coding_variants": 16,
+  "retention_queries": 70,
+  "action_queries": 62,
+  "guard_failures": 14,
+  "checked_query_packets": 70,
+  "one_write_partial_policies": 80,
+  "proper_membership_action_rejections": 2,
+  "invalid_program_compiler_rejections": 8,
+  "gadget_formulas": 75,
+  "gadget_CNF_mask_queries": 4880,
+  "assignment_helper_projections": 154,
+  "label_coupling_anchor": true,
+  "fixed_order_anchor": true,
+  "idempotent_occurrence_anchor": true,
+  "published_tools_executed": 0
+}

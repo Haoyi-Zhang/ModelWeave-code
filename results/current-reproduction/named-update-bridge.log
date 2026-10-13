@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "owned_examples": 6,
+  "retention_queries": 44,
+  "successes": 36,
+  "guard_failures": 8,
+  "checked_packets": 44,
+  "partial_policy_comparisons": 144,
+  "positive_action_queries": 32,
+  "gadget_formulas": 6,
+  "gadget_CNF_mask_queries": 768,
+  "source_assignment_helper_comparisons": 18,
+  "original_provider_false_rejection_anchor": true,
+  "stale_receipt_anchor": true,
+  "published_tools_executed": 0
+}

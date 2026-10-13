@@ -2,7 +2,10 @@
 No external packages, files, or services are consumed.
 """
 from itertools import product
-import time, resource, json
+import time, json, sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'src'))
+from run_resources import peak_rss_kib
 
 # Event: (aspect, optional observation, optional constant write); one Boolean cell.
 def replay(initial, trace, mask):
@@ -91,7 +94,7 @@ def main():
     stale=(0,[(0,None,1),(1,None,2)])
     # This final check uses a 3-valued cell, outside the Boolean enumeration.
     assert replay(*stale,0b10)
-    counts.update(cpu_seconds=time.process_time()-t0, wall_seconds=time.perf_counter()-w0, peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+    counts.update(cpu_seconds=time.process_time()-t0, wall_seconds=time.perf_counter()-w0, peak_rss_kib=peak_rss_kib(),
       negative_controls={'provider_switch':True,'inhibitor_nonmonotonicity':True,'stale_complement':True},
       enumeration={'initial_values':2,'aspect_labels':3,'max_events':3,'valid_options_per_step':18,'masks_per_trace':8},
       status='finite_checks_passed_not_mechanized_general_proof')

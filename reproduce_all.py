@@ -6,15 +6,11 @@ version, toolchain or commit manifest is generated. Resource records are scienti
 run measurements; a successful command is not a general proof-assistant proof.
 """
 from __future__ import annotations
-import argparse,gzip,json,os,resource,subprocess,sys,time
+import argparse,gzip,json,os,subprocess,sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
-
-
-def limits() -> None:
-    # Address-space/CPU bounds apply only to this controlled scientific child.
-    resource.setrlimit(resource.RLIMIT_AS,(2500*1024*1024,2500*1024*1024))
-    resource.setrlimit(resource.RLIMIT_CPU,(2700,2700))
+sys.path.insert(0,str(ROOT/'src'))
+from run_resources import POSIX_LIMITS_AVAILABLE, apply_child_limits, child_usage
 
 
 def load(path: Path):
@@ -40,22 +36,31 @@ def main() -> int:
     out.mkdir(parents=True)
     reports=[];start=time.perf_counter()
     def run(label: str,command: list[str], *, stdout_file: str | None=None) -> None:
-        before=resource.getrusage(resource.RUSAGE_CHILDREN)
+        before=child_usage()
         wall=time.perf_counter()
         log=out/(stdout_file or label+'.log')
         with log.open('w') as f:
-            result=subprocess.run([sys.executable,*command],cwd=ROOT,stdout=f,stderr=subprocess.STDOUT,
-                                  timeout=2700,check=False,preexec_fn=limits if os.name=='posix' else None)
-        after=resource.getrusage(resource.RUSAGE_CHILDREN)
+            environment={**os.environ,'PYTHONDONTWRITEBYTECODE':'1','PYTHONHASHSEED':'0'}
+            result=subprocess.run([sys.executable,'-B',*command],cwd=ROOT,stdout=f,stderr=subprocess.STDOUT,
+                                  timeout=2700,check=False,env=environment,
+                                  preexec_fn=apply_child_limits if POSIX_LIMITS_AVAILABLE else None)
+        after=child_usage()
         reports.append({'command':['python',*[x.replace(str(out),'$OUTPUT') for x in command]],
                         'label':label,'exit_code':result.returncode,
                         'wall_seconds':time.perf_counter()-wall,
-                        'cpu_seconds':after.ru_utime+after.ru_stime-before.ru_utime-before.ru_stime,
-                        'cumulative_child_peak_rss_kib':after.ru_maxrss})
+                        'cpu_seconds':None if before is None or after is None else after[0]-before[0],
+                        'cumulative_child_peak_rss_kib':None if after is None else after[1]})
         if result.returncode:raise RuntimeError(label+' failed; inspect its log')
         print(label+': passed',flush=True)
-    report={'passed':False,'commands':reports,'workers':1}
+    report={'passed':False,'commands':reports,'workers':1,
+            'resource_controls':{'child_wall_timeout_seconds':2700,
+                                 'posix_address_space_and_cpu_limits_applied':POSIX_LIMITS_AVAILABLE,
+                                 'unavailable_telemetry':'null, not zero'}}
     try:
+        run('event-local-guard',['tests/test_event_local_guard.py'],stdout_file='guard-lookup-regression.json')
+        run('named-update-bridge',['tests/test_update_bridge.py','--output',str(out/'update-language.json')])
+        run('update-contract',['tests/test_update_contract.py','--output',str(out/'update-contract.json')])
+        run('sas-supporter-correspondence',['tests/test_supporter_equivalence.py','--output',str(out/'supporter-correspondence.json')])
         run('semantic-tests',['tests/test_semantics.py',str(out/'tests.json')])
         run('structural-tests',['tests/test_structural.py',str(out/'structural')])
         run('source-examples',['tests/test_examples.py',str(out/'examples')])
@@ -98,14 +103,25 @@ def main() -> int:
             raise AssertionError('structured raw records differ')
         for x in sorted((out/'examples').glob('example-*.json')):
             if load(ROOT/'results/examples'/x.name)!=load(x):raise AssertionError('source projection differs')
+        for reference,fresh_name in [('update-language/summary.json','update-language.json'),
+                                     ('update-contract/summary.json','update-contract.json'),
+                                     ('supporter-correspondence/summary.json','supporter-correspondence.json')]:
+            if load(ROOT/'results'/reference)!=load(out/fresh_name):
+                raise AssertionError('update correspondence record differs: '+reference)
+        guard=load(out/'guard-lookup-regression.json')
+        if guard.get('passed') is not True or guard.get('benchmark_timing_run') is not False:
+            raise AssertionError('untimed event-local guard regression failed')
         report.update(passed=True,semantic_campaign_records_compared=records,
                       independently_checked_campaign_packets=checked_packets,
                       structural_inputs_compared=421,source_guided_inputs_compared=6,
+                      correspondence_records_compared=['update-language','update-contract','supporter-correspondence'],
+                      event_local_guard_coverage=guard['coverage'],
                       hashes_generated=False,comparison='exact uncompressed semantic records and scientific counters; timings excluded')
     except (OSError,ValueError,TypeError,AssertionError,RuntimeError,subprocess.TimeoutExpired) as exc:
         report['error']=str(exc).replace(str(out),'$OUTPUT')
     report['wall_seconds']=time.perf_counter()-start
-    report['measured_child_cpu_seconds']=sum(c['cpu_seconds'] for c in reports)
+    report['measured_child_cpu_seconds']=(sum(c['cpu_seconds'] for c in reports)
+                                          if all(c['cpu_seconds'] is not None for c in reports) else None)
     report['scope']='This clean run only; early unmetered exploratory CPU is not reconstructed.'
     (out/'clean-run.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({'passed':report['passed'],'commands':len(reports),'measured_child_cpu_seconds':report['measured_child_cpu_seconds']}))

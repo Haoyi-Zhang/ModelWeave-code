@@ -1,0 +1,40 @@
+{
+  "scope": "Descriptive analysis of stored campaign inputs and certificates; no new semantic queries.",
+  "certificate_coverage": {
+    "zero_event_inputs": 2,
+    "empty_mask_successes": 21213,
+    "no_receipt_successes": 26065,
+    "nonempty_receipt_successes": 23461,
+    "receipt_occurrences": 49861,
+    "full_mask_successes": 548
+  },
+  "groups": {
+    "exhaustive": {
+      "cases": 12350,
+      "queries": 98800,
+      "invalid_queries": 5976,
+      "success_certificates": 12209,
+      "local_certificates": 141
+    },
+    "small": {
+      "cases": 36400,
+      "queries": 127401,
+      "invalid_queries": 6808,
+      "success_certificates": 36115,
+      "local_certificates": 285
+    },
+    "medium": {
+      "cases": 1200,
+      "queries": 4670,
+      "invalid_queries": 1384,
+      "success_certificates": 1152,
+      "local_certificates": 48
+    },
+    "graph": {
+      "cases": 50,
+      "queries": 200,
+      "invalid_queries": 67,
+      "success_certificates": 50
+    }
+  }
+}

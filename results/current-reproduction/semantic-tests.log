@@ -1,0 +1,13 @@
+test_fixed_mask_local_cardinality_and_protocol (__main__.Semantics.test_fixed_mask_local_cardinality_and_protocol) ... ok
+test_mutations (__main__.Semantics.test_mutations) ... ok
+test_named_masks_and_all_policies (__main__.Semantics.test_named_masks_and_all_policies) ... ok
+test_nonlocal_gap_and_omissions (__main__.Semantics.test_nonlocal_gap_and_omissions) ... ok
+test_prime_oracle (__main__.Semantics.test_prime_oracle) ... ok
+test_sat_and_vertex_cover (__main__.Semantics.test_sat_and_vertex_cover) ... ok
+test_static_independence (__main__.Semantics.test_static_independence) ... ok
+test_typing_complete_tiny_input_space (__main__.Semantics.test_typing_complete_tiny_input_space) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.310s
+
+OK

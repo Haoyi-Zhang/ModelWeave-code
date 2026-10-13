@@ -1,0 +1,1618 @@
+{
+  "passed": true,
+  "hand_written_models": 9,
+  "label_mask_queries": 45,
+  "local_projection_queries": 50,
+  "partial_policy_queries": 133,
+  "invalid_interface_rejections": 10,
+  "supporter_quantifier": "exists",
+  "cost_or_timing_comparison": false,
+  "published_tools_executed": 0,
+  "rejections": [
+    {
+      "name": "membership_precondition",
+      "operation": "compile_sas",
+      "rejected": true
+    },
+    {
+      "name": "membership_precondition",
+      "operation": "encode_supporters",
+      "rejected": true
+    },
+    {
+      "name": "computed_effect",
+      "operation": "compile_sas",
+      "rejected": true
+    },
+    {
+      "name": "computed_effect",
+      "operation": "encode_supporters",
+      "rejected": true
+    },
+    {
+      "name": "nonexecutable_full_plan",
+      "operation": "compile_sas",
+      "rejected": true
+    },
+    {
+      "name": "nonexecutable_full_plan",
+      "operation": "encode_supporters",
+      "rejected": true
+    },
+    {
+      "name": "out_of_domain_goal",
+      "operation": "compile_sas",
+      "rejected": true
+    },
+    {
+      "name": "out_of_domain_goal",
+      "operation": "encode_supporters",
+      "rejected": true
+    },
+    {
+      "name": "unreached_full_plan_goal",
+      "operation": "compile_sas",
+      "rejected": true
+    },
+    {
+      "name": "unreached_full_plan_goal",
+      "operation": "encode_supporters",
+      "rejected": true
+    }
+  ],
+  "records": [
+    {
+      "name": "base_without_writer",
+      "task": {
+        "domains": {
+          "visible": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "visible": "on"
+        },
+        "labels": [
+          "read"
+        ],
+        "actions": [
+          {
+            "label": "read",
+            "pre": {
+              "visible": "on"
+            },
+            "eff": {}
+          }
+        ],
+        "goal": {}
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          1
+        ],
+        "aspects": 1,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "forced_terminal_keep": 0,
+      "writer_counts": [
+        0
+      ],
+      "supporter_encoding": {
+        "action_variables": [
+          1
+        ],
+        "options": [
+          {
+            "variable": 2,
+            "at": 0,
+            "cell": "visible",
+            "value": "on",
+            "source": -1,
+            "threats": []
+          }
+        ],
+        "clauses": [
+          [
+            -1,
+            2
+          ]
+        ],
+        "observations": [
+          {
+            "at": 0,
+            "cell": "visible",
+            "value": "on",
+            "reader": 0,
+            "clauses": [
+              [
+                -1,
+                2
+              ]
+            ]
+          }
+        ],
+        "source_positions": "zero-based; base=-1; terminal read=n",
+        "supporter_quantifier": "exists"
+      },
+      "queries": [
+        {
+          "mask": 0,
+          "valid": true,
+          "supporter_witnesses": 2,
+          "first_failure": null
+        },
+        {
+          "mask": 1,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        }
+      ]
+    },
+    {
+      "name": "alternative_supporters",
+      "task": {
+        "domains": {
+          "visible": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "visible": "off"
+        },
+        "labels": [
+          "cache",
+          "backup",
+          "view"
+        ],
+        "actions": [
+          {
+            "label": "cache",
+            "pre": {},
+            "eff": {
+              "visible": "on"
+            }
+          },
+          {
+            "label": "backup",
+            "pre": {},
+            "eff": {
+              "visible": "on"
+            }
+          },
+          {
+            "label": "view",
+            "pre": {
+              "visible": "on"
+            },
+            "eff": {}
+          }
+        ],
+        "goal": {}
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 2,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "forced_terminal_keep": 0,
+      "writer_counts": [
+        2
+      ],
+      "supporter_encoding": {
+        "action_variables": [
+          1,
+          2,
+          3
+        ],
+        "options": [
+          {
+            "variable": 4,
+            "at": 2,
+            "cell": "visible",
+            "value": "on",
+            "source": 0,
+            "threats": []
+          },
+          {
+            "variable": 5,
+            "at": 2,
+            "cell": "visible",
+            "value": "on",
+            "source": 1,
+            "threats": []
+          }
+        ],
+        "clauses": [
+          [
+            -4,
+            1
+          ],
+          [
+            -5,
+            2
+          ],
+          [
+            -3,
+            4,
+            5
+          ]
+        ],
+        "observations": [
+          {
+            "at": 2,
+            "cell": "visible",
+            "value": "on",
+            "reader": 2,
+            "clauses": [
+              [
+                -4,
+                1
+              ],
+              [
+                -5,
+                2
+              ],
+              [
+                -3,
+                4,
+                5
+              ]
+            ]
+          }
+        ],
+        "source_positions": "zero-based; base=-1; terminal read=n",
+        "supporter_quantifier": "exists"
+      },
+      "queries": [
+        {
+          "mask": 0,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        },
+        {
+          "mask": 1,
+          "valid": true,
+          "supporter_witnesses": 2,
+          "first_failure": null
+        },
+        {
+          "mask": 2,
+          "valid": true,
+          "supporter_witnesses": 2,
+          "first_failure": null
+        },
+        {
+          "mask": 3,
+          "valid": true,
+          "supporter_witnesses": 4,
+          "first_failure": null
+        },
+        {
+          "mask": 4,
+          "valid": false,
+          "supporter_witnesses": 0,
+          "first_failure": 2
+        },
+        {
+          "mask": 5,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        },
+        {
+          "mask": 6,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        },
+        {
+          "mask": 7,
+          "valid": true,
+          "supporter_witnesses": 3,
+          "first_failure": null
+        }
+      ]
+    },
+    {
+      "name": "base_threat_and_later_repair",
+      "task": {
+        "domains": {
+          "visible": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "visible": "off"
+        },
+        "labels": [
+          "publish",
+          "hide",
+          "read"
+        ],
+        "actions": [
+          {
+            "label": "publish",
+            "pre": {},
+            "eff": {
+              "visible": "on"
+            }
+          },
+          {
+            "label": "hide",
+            "pre": {},
+            "eff": {
+              "visible": "off"
+            }
+          },
+          {
+            "label": "read",
+            "pre": {
+              "visible": "off"
+            },
+            "eff": {}
+          }
+        ],
+        "goal": {}
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 2,
+            "guard": [
+              [
+                0,
+                [
+                  0
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "forced_terminal_keep": 0,
+      "writer_counts": [
+        2
+      ],
+      "supporter_encoding": {
+        "action_variables": [
+          1,
+          2,
+          3
+        ],
+        "options": [
+          {
+            "variable": 4,
+            "at": 2,
+            "cell": "visible",
+            "value": "off",
+            "source": -1,
+            "threats": [
+              0
+            ]
+          },
+          {
+            "variable": 5,
+            "at": 2,
+            "cell": "visible",
+            "value": "off",
+            "source": 1,
+            "threats": []
+          }
+        ],
+        "clauses": [
+          [
+            -4,
+            -1
+          ],
+          [
+            -5,
+            2
+          ],
+          [
+            -3,
+            4,
+            5
+          ]
+        ],
+        "observations": [
+          {
+            "at": 2,
+            "cell": "visible",
+            "value": "off",
+            "reader": 2,
+            "clauses": [
+              [
+                -4,
+                -1
+              ],
+              [
+                -5,
+                2
+              ],
+              [
+                -3,
+                4,
+                5
+              ]
+            ]
+          }
+        ],
+        "source_positions": "zero-based; base=-1; terminal read=n",
+        "supporter_quantifier": "exists"
+      },
+      "queries": [
+        {
+          "mask": 0,
+          "valid": true,
+          "supporter_witnesses": 2,
+          "first_failure": null
+        },
+        {
+          "mask": 1,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        },
+        {
+          "mask": 2,
+          "valid": true,
+          "supporter_witnesses": 4,
+          "first_failure": null
+        },
+        {
+          "mask": 3,
+          "valid": true,
+          "supporter_witnesses": 2,
+          "first_failure": null
+        },
+        {
+          "mask": 4,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        },
+        {
+          "mask": 5,
+          "valid": false,
+          "supporter_witnesses": 0,
+          "first_failure": 2
+        },
+        {
+          "mask": 6,
+          "valid": true,
+          "supporter_witnesses": 3,
+          "first_failure": null
+        },
+        {
+          "mask": 7,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        }
+      ]
+    },
+    {
+      "name": "mixed_repeated_label",
+      "task": {
+        "domains": {
+          "visible": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "visible": "off"
+        },
+        "labels": [
+          "bundle",
+          "repair",
+          "read"
+        ],
+        "actions": [
+          {
+            "label": "bundle",
+            "pre": {},
+            "eff": {
+              "visible": "on"
+            }
+          },
+          {
+            "label": "bundle",
+            "pre": {},
+            "eff": {
+              "visible": "off"
+            }
+          },
+          {
+            "label": "repair",
+            "pre": {},
+            "eff": {
+              "visible": "on"
+            }
+          },
+          {
+            "label": "read",
+            "pre": {
+              "visible": "on"
+            },
+            "eff": {}
+          }
+        ],
+        "goal": {}
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 2,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "forced_terminal_keep": 0,
+      "writer_counts": [
+        3
+      ],
+      "supporter_encoding": {
+        "action_variables": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "options": [
+          {
+            "variable": 5,
+            "at": 3,
+            "cell": "visible",
+            "value": "on",
+            "source": 0,
+            "threats": [
+              1
+            ]
+          },
+          {
+            "variable": 6,
+            "at": 3,
+            "cell": "visible",
+            "value": "on",
+            "source": 2,
+            "threats": []
+          }
+        ],
+        "clauses": [
+          [
+            -5,
+            1
+          ],
+          [
+            -5,
+            -2
+          ],
+          [
+            -6,
+            3
+          ],
+          [
+            -4,
+            5,
+            6
+          ]
+        ],
+        "observations": [
+          {
+            "at": 3,
+            "cell": "visible",
+            "value": "on",
+            "reader": 3,
+            "clauses": [
+              [
+                -5,
+                1
+              ],
+              [
+                -5,
+                -2
+              ],
+              [
+                -6,
+                3
+              ],
+              [
+                -4,
+                5,
+                6
+              ]
+            ]
+          }
+        ],
+        "source_positions": "zero-based; base=-1; terminal read=n",
+        "supporter_quantifier": "exists"
+      },
+      "queries": [
+        {
+          "mask": 0,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        },
+        {
+          "mask": 1,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        },
+        {
+          "mask": 2,
+          "valid": true,
+          "supporter_witnesses": 2,
+          "first_failure": null
+        },
+        {
+          "mask": 3,
+          "valid": true,
+          "supporter_witnesses": 2,
+          "first_failure": null
+        },
+        {
+          "mask": 4,
+          "valid": false,
+          "supporter_witnesses": 0,
+          "first_failure": 3
+        },
+        {
+          "mask": 5,
+          "valid": false,
+          "supporter_witnesses": 0,
+          "first_failure": 3
+        },
+        {
+          "mask": 6,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        },
+        {
+          "mask": 7,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        }
+      ]
+    },
+    {
+      "name": "same_label_anchor",
+      "task": {
+        "domains": {
+          "visible": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "visible": "off"
+        },
+        "labels": [
+          "bundle",
+          "repair"
+        ],
+        "actions": [
+          {
+            "label": "bundle",
+            "pre": {},
+            "eff": {
+              "visible": "on"
+            }
+          },
+          {
+            "label": "repair",
+            "pre": {},
+            "eff": {
+              "visible": "off"
+            }
+          },
+          {
+            "label": "bundle",
+            "pre": {
+              "visible": "off"
+            },
+            "eff": {}
+          }
+        ],
+        "goal": {}
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 2,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 0,
+            "guard": [
+              [
+                0,
+                [
+                  0
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "forced_terminal_keep": 0,
+      "writer_counts": [
+        2
+      ],
+      "supporter_encoding": {
+        "action_variables": [
+          1,
+          2,
+          3
+        ],
+        "options": [
+          {
+            "variable": 4,
+            "at": 2,
+            "cell": "visible",
+            "value": "off",
+            "source": -1,
+            "threats": [
+              0
+            ]
+          },
+          {
+            "variable": 5,
+            "at": 2,
+            "cell": "visible",
+            "value": "off",
+            "source": 1,
+            "threats": []
+          }
+        ],
+        "clauses": [
+          [
+            -4,
+            -1
+          ],
+          [
+            -5,
+            2
+          ],
+          [
+            -3,
+            4,
+            5
+          ]
+        ],
+        "observations": [
+          {
+            "at": 2,
+            "cell": "visible",
+            "value": "off",
+            "reader": 2,
+            "clauses": [
+              [
+                -4,
+                -1
+              ],
+              [
+                -5,
+                2
+              ],
+              [
+                -3,
+                4,
+                5
+              ]
+            ]
+          }
+        ],
+        "source_positions": "zero-based; base=-1; terminal read=n",
+        "supporter_quantifier": "exists"
+      },
+      "queries": [
+        {
+          "mask": 0,
+          "valid": true,
+          "supporter_witnesses": 2,
+          "first_failure": null
+        },
+        {
+          "mask": 1,
+          "valid": false,
+          "supporter_witnesses": 0,
+          "first_failure": 2
+        },
+        {
+          "mask": 2,
+          "valid": true,
+          "supporter_witnesses": 4,
+          "first_failure": null
+        },
+        {
+          "mask": 3,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        }
+      ]
+    },
+    {
+      "name": "local_global_prime_gap",
+      "task": {
+        "domains": {
+          "visible": [
+            "off",
+            "on"
+          ],
+          "mode": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "visible": "off",
+          "mode": "off"
+        },
+        "labels": [
+          "publish",
+          "reset",
+          "read"
+        ],
+        "actions": [
+          {
+            "label": "publish",
+            "pre": {},
+            "eff": {
+              "visible": "on",
+              "mode": "on"
+            }
+          },
+          {
+            "label": "reset",
+            "pre": {},
+            "eff": {
+              "visible": "on",
+              "mode": "off"
+            }
+          },
+          {
+            "label": "read",
+            "pre": {
+              "visible": "on",
+              "mode": "off"
+            },
+            "eff": {}
+          }
+        ],
+        "goal": {}
+      },
+      "case": {
+        "domains": [
+          2,
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0,
+          0
+        ],
+        "aspects": 3,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "tag": 2,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ],
+              [
+                1,
+                [
+                  0
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "forced_terminal_keep": 0,
+      "writer_counts": [
+        2,
+        2
+      ],
+      "supporter_encoding": {
+        "action_variables": [
+          1,
+          2,
+          3
+        ],
+        "options": [
+          {
+            "variable": 4,
+            "at": 2,
+            "cell": "visible",
+            "value": "on",
+            "source": 0,
+            "threats": []
+          },
+          {
+            "variable": 5,
+            "at": 2,
+            "cell": "visible",
+            "value": "on",
+            "source": 1,
+            "threats": []
+          },
+          {
+            "variable": 6,
+            "at": 2,
+            "cell": "mode",
+            "value": "off",
+            "source": -1,
+            "threats": [
+              0
+            ]
+          },
+          {
+            "variable": 7,
+            "at": 2,
+            "cell": "mode",
+            "value": "off",
+            "source": 1,
+            "threats": []
+          }
+        ],
+        "clauses": [
+          [
+            -4,
+            1
+          ],
+          [
+            -5,
+            2
+          ],
+          [
+            -3,
+            4,
+            5
+          ],
+          [
+            -6,
+            -1
+          ],
+          [
+            -7,
+            2
+          ],
+          [
+            -3,
+            6,
+            7
+          ]
+        ],
+        "observations": [
+          {
+            "at": 2,
+            "cell": "visible",
+            "value": "on",
+            "reader": 2,
+            "clauses": [
+              [
+                -4,
+                1
+              ],
+              [
+                -5,
+                2
+              ],
+              [
+                -3,
+                4,
+                5
+              ]
+            ]
+          },
+          {
+            "at": 2,
+            "cell": "mode",
+            "value": "off",
+            "reader": 2,
+            "clauses": [
+              [
+                -6,
+                -1
+              ],
+              [
+                -7,
+                2
+              ],
+              [
+                -3,
+                6,
+                7
+              ]
+            ]
+          }
+        ],
+        "source_positions": "zero-based; base=-1; terminal read=n",
+        "supporter_quantifier": "exists"
+      },
+      "queries": [
+        {
+          "mask": 0,
+          "valid": true,
+          "supporter_witnesses": 2,
+          "first_failure": null
+        },
+        {
+          "mask": 1,
+          "valid": true,
+          "supporter_witnesses": 2,
+          "first_failure": null
+        },
+        {
+          "mask": 2,
+          "valid": true,
+          "supporter_witnesses": 8,
+          "first_failure": null
+        },
+        {
+          "mask": 3,
+          "valid": true,
+          "supporter_witnesses": 8,
+          "first_failure": null
+        },
+        {
+          "mask": 4,
+          "valid": false,
+          "supporter_witnesses": 0,
+          "first_failure": 2
+        },
+        {
+          "mask": 5,
+          "valid": false,
+          "supporter_witnesses": 0,
+          "first_failure": 2
+        },
+        {
+          "mask": 6,
+          "valid": true,
+          "supporter_witnesses": 3,
+          "first_failure": null
+        },
+        {
+          "mask": 7,
+          "valid": true,
+          "supporter_witnesses": 3,
+          "first_failure": null
+        }
+      ]
+    },
+    {
+      "name": "prestate_and_idempotent_writes",
+      "task": {
+        "domains": {
+          "visible": [
+            "off",
+            "on"
+          ]
+        },
+        "base": {
+          "visible": "off"
+        },
+        "labels": [
+          "prepare",
+          "read"
+        ],
+        "actions": [
+          {
+            "label": "prepare",
+            "pre": {},
+            "eff": {
+              "visible": "on"
+            }
+          },
+          {
+            "label": "read",
+            "pre": {
+              "visible": "on"
+            },
+            "eff": {
+              "visible": "on"
+            }
+          }
+        ],
+        "goal": {}
+      },
+      "case": {
+        "domains": [
+          2
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 2,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          }
+        ]
+      },
+      "forced_terminal_keep": 0,
+      "writer_counts": [
+        2
+      ],
+      "supporter_encoding": {
+        "action_variables": [
+          1,
+          2
+        ],
+        "options": [
+          {
+            "variable": 3,
+            "at": 1,
+            "cell": "visible",
+            "value": "on",
+            "source": 0,
+            "threats": []
+          }
+        ],
+        "clauses": [
+          [
+            -3,
+            1
+          ],
+          [
+            -2,
+            3
+          ]
+        ],
+        "observations": [
+          {
+            "at": 1,
+            "cell": "visible",
+            "value": "on",
+            "reader": 1,
+            "clauses": [
+              [
+                -3,
+                1
+              ],
+              [
+                -2,
+                3
+              ]
+            ]
+          }
+        ],
+        "source_positions": "zero-based; base=-1; terminal read=n",
+        "supporter_quantifier": "exists"
+      },
+      "queries": [
+        {
+          "mask": 0,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        },
+        {
+          "mask": 1,
+          "valid": true,
+          "supporter_witnesses": 2,
+          "first_failure": null
+        },
+        {
+          "mask": 2,
+          "valid": false,
+          "supporter_witnesses": 0,
+          "first_failure": 1
+        },
+        {
+          "mask": 3,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        }
+      ]
+    },
+    {
+      "name": "goal_after_last_action",
+      "task": {
+        "domains": {
+          "mode": [
+            "plain",
+            "dark",
+            "compact"
+          ]
+        },
+        "base": {
+          "mode": "plain"
+        },
+        "labels": [
+          "theme"
+        ],
+        "actions": [
+          {
+            "label": "theme",
+            "pre": {},
+            "eff": {
+              "mode": "dark"
+            }
+          }
+        ],
+        "goal": {
+          "mode": "dark"
+        }
+      },
+      "case": {
+        "domains": [
+          3
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 2,
+        "events": [
+          {
+            "tag": 0,
+            "guard": [],
+            "write": [
+              [
+                0,
+                1
+              ]
+            ]
+          },
+          {
+            "tag": 1,
+            "guard": [
+              [
+                0,
+                [
+                  1
+                ]
+              ]
+            ],
+            "write": []
+          }
+        ]
+      },
+      "forced_terminal_keep": 2,
+      "writer_counts": [
+        1
+      ],
+      "supporter_encoding": {
+        "action_variables": [
+          1
+        ],
+        "options": [
+          {
+            "variable": 2,
+            "at": 1,
+            "cell": "mode",
+            "value": "dark",
+            "source": 0,
+            "threats": []
+          }
+        ],
+        "clauses": [
+          [
+            -2,
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        "observations": [
+          {
+            "at": 1,
+            "cell": "mode",
+            "value": "dark",
+            "reader": null,
+            "clauses": [
+              [
+                -2,
+                1
+              ],
+              [
+                2
+              ]
+            ]
+          }
+        ],
+        "source_positions": "zero-based; base=-1; terminal read=n",
+        "supporter_quantifier": "exists"
+      },
+      "queries": [
+        {
+          "mask": 0,
+          "valid": false,
+          "supporter_witnesses": 0,
+          "first_failure": 1
+        },
+        {
+          "mask": 1,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        }
+      ]
+    },
+    {
+      "name": "empty_history",
+      "task": {
+        "domains": {
+          "fixed": [
+            "locked"
+          ]
+        },
+        "base": {
+          "fixed": "locked"
+        },
+        "labels": [],
+        "actions": [],
+        "goal": {}
+      },
+      "case": {
+        "domains": [
+          1
+        ],
+        "nodes": [],
+        "edges": [],
+        "base": [
+          0
+        ],
+        "aspects": 0,
+        "events": []
+      },
+      "forced_terminal_keep": 0,
+      "writer_counts": [
+        0
+      ],
+      "supporter_encoding": {
+        "action_variables": [],
+        "options": [],
+        "clauses": [],
+        "observations": [],
+        "source_positions": "zero-based; base=-1; terminal read=n",
+        "supporter_quantifier": "exists"
+      },
+      "queries": [
+        {
+          "mask": 0,
+          "valid": true,
+          "supporter_witnesses": 1,
+          "first_failure": null
+        }
+      ]
+    }
+  ]
+}

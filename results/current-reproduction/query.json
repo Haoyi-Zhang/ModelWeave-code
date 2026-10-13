@@ -1,0 +1,91 @@
+{
+  "case": {
+    "domains": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "nodes": [],
+    "edges": [],
+    "base": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "aspects": 2,
+    "events": [
+      {
+        "tag": 0,
+        "guard": [],
+        "write": [
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "tag": 1,
+        "guard": [
+          [
+            0,
+            [
+              1
+            ]
+          ]
+        ],
+        "write": [
+          [
+            2,
+            1
+          ]
+        ]
+      },
+      {
+        "tag": 1,
+        "guard": [
+          [
+            1,
+            [
+              1
+            ]
+          ]
+        ],
+        "write": [
+          [
+            3,
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "certificate": {
+    "kind": "infeasible",
+    "on": 2,
+    "off": 1,
+    "core_on": 2,
+    "core_off": 1,
+    "proof": {
+      "cut": [
+        2,
+        1,
+        -1
+      ]
+    },
+    "witnesses": [
+      {
+        "on": 0,
+        "off": 1,
+        "mask": 0
+      },
+      {
+        "on": 2,
+        "off": 0,
+        "mask": 3
+      }
+    ]
+  }
+}

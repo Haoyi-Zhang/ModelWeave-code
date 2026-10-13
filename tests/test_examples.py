@@ -5,11 +5,12 @@ The exact closed input traces are original encodings. Two balance inputs share
 one source passage; six encodings do not mean six independent published examples.
 """
 from __future__ import annotations
-import argparse, json, resource, sys, time
+import argparse, json, sys, time
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 import engine, checker, producer, oracle
 from generate import make, ev
+from run_resources import peak_rss_kib
 
 ANCHOR='https://jacquesklein2302.github.io/papers/2009-AspectUnweaving-MODELS.pdf'
 RES='https://www.doc.ic.ac.uk/~iccp/papers/ReversingEventStructures.pdf'
@@ -68,7 +69,7 @@ def main():
             'optimal_certificates':sum(r['certificate']['kind']=='optimal' for r in records),
             'infeasible_certificates':sum(r['certificate']['kind']=='infeasible' for r in records),
             'cpu_seconds':time.process_time()-start,'wall_seconds':time.perf_counter()-wall,
-            'peak_rss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+            'peak_rss_kib':peak_rss_kib(),
             'counters':{'producer':dict(engine.COUNTS),'checker':dict(checker.COUNTS),'oracle':dict(oracle.COUNTS)}}
     (args.output/'summary.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report));return 0

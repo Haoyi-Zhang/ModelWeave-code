@@ -9,6 +9,13 @@
   "one_write_result": "polynomial closure and unique maximum valid retention under stated fragment",
   "two_write_result": "NP-complete with Boolean cells, <=2 writes/cell, exactly one event/aspect, one forced keep and one forced removal",
   "two_write_nonclaim": "events may have polynomial footprint; constant-arity hardness is not proved",
+  "sas_source": "supplied executable full plan reaching its terminal goal; equality preconditions and simultaneous constant effects only",
+  "sas_admission": "coded case including any terminal label/event must fit implementation bounds; invalid full history or unreached goal rejected",
+  "sas_supporters": "exists fresh option variables per read; base option only if equality holds; strict j<k<i opponents; not exactly-one or universal",
+  "sas_selection": "u_i=[a_i in M] binds all occurrences of an original label",
+  "sas_goal": "nonempty goal adds one write-free fresh label pinned kept; preserves original writer occurrences but not general forced-keep count",
+  "prime_boundary": "auxiliary-free local primes for one observation; globally exact conjunction need not be globally prime",
+  "prior_coverage": "joint two-write/one-event/one-keep/one-removal coverage unresolved; no priority claim",
   "excluded": [
     "rematching",
     "fresh identity creation",

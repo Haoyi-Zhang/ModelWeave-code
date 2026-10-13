@@ -800,3 +800,101 @@ auxiliary-free representation question of T22.
 The portable update-contract regression tests L27--L29 on explicitly stored owned
 fixtures, recoded domains and labels, and exact target mask/source assignment
 comparisons. These finite checks are not proofs or source-tool extraction.
+
+## 17. Restricted SAS+ supporter-to-tag correspondence
+
+The source is a finite-domain SAS+ task with a supplied **valid full plan**:
+its fixed occurrences execute from a total base B and reach the partial equality
+goal G. Each occurrence i has label a_i, equality-precondition map p_i, and
+constant-effect map w_i. Preconditions use the pre-state; effects overwrite
+simultaneously. Whole-label selection retains every occurrence with a selected
+label, in original order. This is valid-plan deletion, not compilation of an
+arbitrary task with an invalid supplied sequence. Proper nonsingleton guards,
+conditional effects and computed assignments are outside this correspondence.
+
+Primary sources: Balyo, Chrpa and Kilani, SoCS 2014, “Propositional Encoding
+of Plan Redundancy”, Propositions 1--2
+(https://ktiml.mff.cuni.cz/~balyo/papers/socs14.pdf), and Salerno, Fuentetaja
+and Seipp, JAIR 2025, Definition 1, Section 3.2 and Appendix A
+(https://mrlab.ai/papers/salerno-et-al-jair2025.pdf).
+Both complete articles were read; the encoding is inherited, not invented here.
+
+Direct bijections code each variable as one cell and each value in its explicit
+domain. Equalities become singleton guards; effects remain the same write maps.
+W_x = |{i : x in dom(w_i)}| is unchanged, counting idempotent and repeated-label
+writer occurrences. This does not count one-hot effect-list literals.
+For nonempty G add one fresh-label write-free terminal read and force that label
+present. A request (P,D) maps to (P union {a_G}, D). This adds a mandatory label
+and an occurrence, but no writes; it does not in general preserve the number of
+keep facts. The two-write reduction has G empty and an existing forced reader,
+so its joint one-keep/one-removal restriction is preserved.
+The mathematical coding has no executable size caps; compile_sas admits only
+coded cases (including any terminal event/label) within the engine's bounds.
+It rejects nonexecutable full histories and unreached goals.
+
+Let u_i be the occurrence selector. An equality read q=(i,x,v) is active when
+t_q=u_i; for a terminal goal i=n and t_q=true. Source positions are zero-based.
+
+    C_q = {-1 if B(x)=v} union {j : 0<=j<i, x in dom(w_j), w_j(x)=v}.
+    O_qj = {k : j<k<i, x in dom(w_k), w_k(x)!=v}.
+    Psi_q = (not t_q OR OR_{j in C_q} y_qj)
+            AND AND_{j in C_q, j>=0} (not y_qj OR u_j)
+            AND AND_{j in C_q, k in O_qj} (not y_qj OR not u_k).
+
+The base option is absent unless its equality holds. Strict intervals exclude
+the reader's own effects; a terminal read at n includes the last action n-1.
+Options are fresh existential witnesses. They are not universally quantified,
+not exactly-one, and need not choose the last good writer: later good writes
+do not oppose the equality. There are no reverse implications forcing options.
+Empty OR is false and empty AND is true.
+
+**Lemma L30 (local existential supporter projection).** For every occurrence
+mask u, exists Y_q Psi_q holds iff q is inactive or its ghost-prefix value is v.
+For a goal, activation is unconditional.
+
+**Proof.** An inactive read has the all-false option witness. For an active read,
+a true option gives the base value or a selected good write with no later selected
+opponent. Any later selected write to the cell is good, so the resulting value
+is v. Conversely, when the value is v choose the last selected writer or the base
+if none exists. It is a candidate with no later selected opponent. Set just that
+option true. Earlier guard success is not needed for this ghost statement. QED.
+
+**Theorem L31 (whole-label correspondence).** Assuming the supplied full source
+plan is executable and reaches G, for every original label mask M,
+
+    Exec_G(M) iff exists Y F_pi,G(u(M),Y),
+    where F_pi,G = AND_q Psi_q and u_i(M) = [a_i in M].
+
+This is equivalent to successful coded replay with the terminal label pinned
+when added. Original writer counts and whole-label selection are preserved;
+partial-request feasibility is preserved by the goal-label mapping.
+
+**Proof.** Fresh option blocks permit projection through the conjunction.
+L30 gives exactly all conditional action ghost equalities and unconditional
+terminal equalities. Guard factorization T6 turns that conjunction into successful
+replay; L27's position induction proves direct state and original-receipt coding.
+All occurrences of a label use the same bit, so none is selected independently.
+Writer counts are identical before adding the write-free terminal event.
+Existentially selecting M extending the mapped request proves feasibility. QED.
+
+The assertion is for every M, [Exec_G(M) iff exists Y F(u(M),Y)], not
+that every M has a witness or that every option assignment must satisfy F. For one
+original read the projected predicate is exactly H_i,x; forced same-label anchors
+and last-tag representatives yield T7--T10's auxiliary-free local prime profile.
+Flat-CNF minimality is for **one local predicate over the original labels**,
+not against auxiliary encodings, shared representations or global trace primes.
+With base (0,0), p writing (1,1), g writing (1,0), and r reading (1,0), the local
+ternary primes (not r OR p OR g) and (not r OR not p OR g) have conjunction
+equivalent to the binary global prime (not r OR g). Global exactness is not global
+primality. Terminal source goals are unconditional; the coded reader only has
+that meaning after its label is pinned. Empty-mask/M2 endpoint claims about
+unpinned readers do not transfer to the goal-pinned source problem.
+
+Nine hand-written models in tests/test_supporter_equivalence.py compare the same
+obligations by source execution, existential clause evaluation, replay and checker
+validation: 45 masks, 50 local projections, 133 partial policies and ten explicit
+admission rejections. They include alternative/nonunique witnesses, mixed repeated
+labels, same-label anchors, strict pre-state/terminal boundaries and the prime gap.
+These are discriminating finite anchors, not a proof or a cost/performance win.
+Prior coverage of the joint two-write/one-event/one-keep/one-removal restriction
+remains unknown; this correspondence makes no priority claim.

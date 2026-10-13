@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "tests_run": 4,
+  "tests": [
+    "test_bounded_multiwrite_variants",
+    "test_hand_written_receipt_and_counter_anchors",
+    "test_named_fixtures",
+    "test_public_inferred_old_api"
+  ],
+  "coverage": {
+    "named_fixtures": 11,
+    "variant_fixtures": 24,
+    "named_masks": 124,
+    "variant_masks": 305,
+    "success_masks": 334,
+    "failure_masks": 95,
+    "receipt_occurrences": 1054,
+    "old_pairs": 8004,
+    "public_api_calls": 2249,
+    "checker_calls": 668
+  },
+  "failures": [],
+  "errors": [],
+  "comparison_reference": "independent per-coordinate guard scan",
+  "benchmark_timing_run": false,
+  "saved_results_written": false
+}

@@ -1,7 +1,7 @@
 """Portable regressions for named patches, action coding, and the write boundary.
 
 Uses the reviewed direct named/action interpreters, not a third-party planner.
-No output is written unless --output names a new file inside P003.
+No output is written unless --output names a new file.
 """
 from __future__ import annotations
 import argparse
@@ -215,8 +215,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.output:
         destination = args.output.resolve()
-        if not destination.is_relative_to(ROOT.parent.resolve()) or destination.exists():
-            parser.error('output must be a new file inside P003')
+        if destination.exists():
+            parser.error('output must be a new file')
     report = run()
     if args.output:
         destination.parent.mkdir(parents=True, exist_ok=True)

@@ -2,7 +2,10 @@
 A second bounded pilot; it is not a general mechanized proof.
 """
 from itertools import product
-import random, json, time, resource
+import random, json, time, sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'src'))
+from run_resources import peak_rss_kib
 
 def cs(initial, tr, i, x):
     a,g,_=tr[i]; allowed=g[x]; anchor=-1; base=initial[x]
@@ -102,5 +105,5 @@ def main():
     base={0:0,1:0};tr=[(0,{}, {0:1,1:1}),(1,{}, {0:1,1:0}),(2,{0:{1},1:{0}}, {})]
     assert [len(n)+len(p) for x in (0,1) for n,p in cs(base,tr,2,x)]==[3,3]
     assert all(run(base,tr,k)==(not(k&4) or bool(k&2)) for k in range(8))
-    print(json.dumps(dict(random_traces=512,observations=observations,masks=masks,prime_equality_checks=observations,SAT_gadget_cases=sat_cases,policy_completions=completions,local_global_gap=True,unary_guard_domain=3,seed=716421,cpu_seconds=time.process_time()-t0,peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,status='finite_checks_passed_not_mechanized_general_proof'),indent=2))
+    print(json.dumps(dict(random_traces=512,observations=observations,masks=masks,prime_equality_checks=observations,SAT_gadget_cases=sat_cases,policy_completions=completions,local_global_gap=True,unary_guard_domain=3,seed=716421,cpu_seconds=time.process_time()-t0,peak_rss_kib=peak_rss_kib(),status='finite_checks_passed_not_mechanized_general_proof'),indent=2))
 if __name__=='__main__':main()

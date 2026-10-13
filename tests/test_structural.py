@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Exact bounded falsification of the structural refinements (one worker)."""
 from __future__ import annotations
-import itertools, json, random, resource, sys, time
+import itertools, json, random, sys, time
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 import engine, producer, checker, oracle, generate, structural
+from run_resources import peak_rss_kib
 
 
 def cnf_value(clauses, mask):
@@ -127,7 +128,7 @@ def run(output):
         records.append({'group': 'choice_tree', 'leaves': leaves, 'case': raw,
                         'certificate': cert, 'checked': report})
     output.mkdir(parents=True, exist_ok=True)
-    with (output / 'structural-cases.jsonl').open('w') as f:
+    with (output / 'structural-cases.jsonl').open('w', newline='\n') as f:
         for record in records:
             f.write(json.dumps(record, sort_keys=True, separators=(',', ':')) + '\n')
     report = {'passed': True, 'total_inputs': len(records),
@@ -137,7 +138,7 @@ def run(output):
               'choice_tree_cases': 5, 'largest_checked_global_core': 7,
               'strict_expressivity_nonrepresentation': True,
               'cpu_seconds': time.process_time() - cpu, 'wall_seconds': time.perf_counter() - wall,
-              'peak_rss_kib': resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+              'peak_rss_kib': peak_rss_kib(),
               'counters': {'producer': dict(engine.COUNTS), 'checker': dict(checker.COUNTS),
                            'oracle': dict(oracle.COUNTS)}}
     (output / 'structural.json').write_text(json.dumps(report, indent=2) + '\n')
