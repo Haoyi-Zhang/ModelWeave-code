@@ -86,7 +86,8 @@ def cnf_holds(clauses, assignment):
 
 def witnesses(encoded, occurrences, clauses=None):
     # Only these tiny anchors are enumerated; construction itself does not search.
-    assert len(encoded['options']) <= 12
+    if len(encoded['options']) > 12:
+        raise ValueError('supporter anchor exceeds the twelve-option bound')
     n = len(encoded['action_variables'])
     return [bits for bits in range(1 << len(encoded['options']))
             if cnf_holds(encoded['clauses'] if clauses is None else clauses,
@@ -105,6 +106,8 @@ def all_primes(truth, m):
 
 
 def run():
+    if not __debug__:
+        raise RuntimeError('scientific comparisons require assertions; run Python without -O')
     records = []
     queries = observations = policies = 0
     for name, program in fixtures():

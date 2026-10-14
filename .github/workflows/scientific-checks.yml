@@ -27,6 +27,8 @@ jobs:
       - name: Select fresh output on the assigned runner
         shell: bash
         run: echo "REPRO_OUTPUT=$RUNNER_TEMP/p003-scientific-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" >> "$GITHUB_ENV"
+      - name: Check scientific entry execution modes
+        run: python -B tests/test_assertion_gate.py -v
       - name: Reproduce and independently check scientific records
         run: python reproduce_all.py --output "$REPRO_OUTPUT"
       - name: Upload raw results and logs

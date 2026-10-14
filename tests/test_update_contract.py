@@ -66,6 +66,8 @@ def recoded(program):
 
 
 def run():
+    if not __debug__:
+        raise RuntimeError('scientific comparisons require assertions; run Python without -O')
     records = []
     queries = action_queries = policies = failures = rejected_memberships = 0
     for name, original in fixtures():

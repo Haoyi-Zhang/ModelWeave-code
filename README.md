@@ -39,6 +39,11 @@ the keep-reader/remove-reset request. Choice alone is not the hardness mechanism
 
 Portable focused checks, with no third-party planner:
 
+The three named-update/supporter scientific entry points require enabled Python
+assertions and refuse `-O` before evaluating fixtures or emitting a pass record.
+`tests/test_assertion_gate.py` checks that execution contract in both modes;
+optimized execution of the scientific entries is a refusal, not extra evidence.
+
 ```sh
 python -B tests/test_update_bridge.py
 python -B tests/test_update_contract.py

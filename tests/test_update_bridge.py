@@ -108,6 +108,8 @@ def reduction_cnf(n, formula, mask):
 
 
 def run():
+    if not __debug__:
+        raise RuntimeError('scientific comparisons require assertions; run Python without -O')
     records = []
     successes = failures = packets = actions_checked = policies = 0
     for name, program in fixtures():
