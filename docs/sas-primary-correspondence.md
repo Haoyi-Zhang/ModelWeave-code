@@ -21,7 +21,7 @@ encoding appendices:
 | Source location | Fact used | Exact candidate correspondence |
 |---|---|---|
 | 2014 Planning preliminaries (PDF page 2); 2025 Definition 1 (page 3) | Finite-domain partial equality preconditions and constant partial effects, applied to pre-state | Direct cell/value bijections; no one-hot expansion; full source sequence must execute and reach its goal |
-| 2014 Propositional Encoding of Plan Redundancy (pages 4--6), Propositions 1--2; 2025 Section 3.2 and Appendix A (pages 34--35) | Earlier achievers and intervening opposers represented by option variables | L30 explicitly existentially projects fresh options; C_q includes base only when its equality holds, and threats use strict j<k<i |
+| 2014 Propositional Encoding of Plan Redundancy (pages 4--6), Proposition 1; 2025 Section 3.2 and Appendix A (pages 34--35) | Earlier achievers and intervening opposers represented by option variables | L30 explicitly existentially projects fresh options; C_q includes base only when its equality holds, and threats use strict j<k<i |
 | 2014 Minimal Length Reduction/Minimal Reduction (pages 6--7); 2025 Appendix A | Negated occurrence-selector soft clauses optimize removed action cost | Only hard feasibility semantics is compared here; no cost or runtime superiority claim |
 | 2025 Section 4 (pages 7--15) | Four skip/apply planning compilations | Recognized as nearest optimal alternatives, not claimed to be implemented or benchmarked by this artifact |
 | 2025 Section 5 (pages 15--20) | Single-achiever necessity and fix-point PAL reasoning | One-write implication closure is identified as standard reasoning; these general results do not settle the joint writer-count restriction |

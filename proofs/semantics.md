@@ -813,7 +813,7 @@ arbitrary task with an invalid supplied sequence. Proper nonsingleton guards,
 conditional effects and computed assignments are outside this correspondence.
 
 Primary sources: Balyo, Chrpa and Kilani, SoCS 2014, “Propositional Encoding
-of Plan Redundancy”, Propositions 1--2
+of Plan Redundancy”, Proposition 1
 (https://ktiml.mff.cuni.cz/~balyo/papers/socs14.pdf), and Salerno, Fuentetaja
 and Seipp, JAIR 2025, Definition 1, Section 3.2 and Appendix A
 (https://mrlab.ai/papers/salerno-et-al-jair2025.pdf).
